@@ -71,9 +71,11 @@ function challengeChoice() {
                             <span>1 month</span>
                         </label>
                     </p>
-                    <div className='row'>
+                    {/* custom length */}
+                    <p>
                         <div className='input-field col s3'>
-                            <input placeholder="#" type='number' />
+                            <input placeholder="#" id="customNumber" type='number' />
+                            <label for="customNumber">Custom length</label>
                         </div>
                         <div>
                             <select>
@@ -83,11 +85,7 @@ function challengeChoice() {
                                 <option value="month">Months(s)</option>
                             </select>
                         </div>
-                    </div>
-                    <p>
-
                     </p>
-
                 </form>
             </div>
         </div>
