@@ -1,8 +1,8 @@
 import React from 'react';
 
-function howLong() {
+function whatLength() {
     return <div>
-        <h1>How long do you want this challenge to last?</h1>
+        <h3>How long do you want this challenge to last?</h3>
         <form action="#">
             <p>
                 <label>
@@ -27,8 +27,6 @@ function howLong() {
                 <div className='input-field col s3'>
                     <input placeholder="#" id="customNumber" type='number' />
                     <label for="customNumber">Custom length</label>
-                </div>
-                <div>
                     <select>
                         <option value="" disabled selected>Choose your option</option>
                         <option value="day">Day(s)</option>
@@ -41,4 +39,4 @@ function howLong() {
     </div>
 }
 
-export default howLong;
+export default whatLength;
