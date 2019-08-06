@@ -1,6 +1,6 @@
 import React from 'react';
 
-function speedDistance() {
+function SpeedDistance() {
     return <div>
         <h3>What distance would you like to set for the speed challenge?</h3>
         <form action="#">
@@ -19,12 +19,12 @@ function speedDistance() {
     </div>
 }
 
-function speed() {
+function Speed() {
     return <div>
     <h1>Challenge created! Whoever logs the fastest time at *chosen distance* over the next *length chosen* wins!!</h1>
     </div>
 }
 
 
-export default speedDistance;
-export default speed;
+export default SpeedDistance;
+export default Speed;
