@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./Fab.css"
 import M from "materialize-css";
 
 class FloatingActionButton extends Component {
@@ -9,7 +10,7 @@ class FloatingActionButton extends Component {
         return (
             <div className="fixed-action-btn">
                 <a className="btn-floating btn-large red">
-                    <i className="large material-icons">add</i>
+                    <i className="fab large material-icons" tabIndex="1">add</i>
                 </a>
                 <ul>
                     <li><a className="btn-floating green"><i className="material-icons">directions_run</i></a></li>
