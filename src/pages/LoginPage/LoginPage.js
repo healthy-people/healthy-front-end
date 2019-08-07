@@ -1,29 +1,39 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import "./LoginPage.css";
 import M from "materialize-css";
 
-class Login_SignUp extends Component {
-    componentDidMount() {
-        M.AutoInit();
-    }
 
-    state = {
-        username: "",
-        password: ""
-    }
+function Login_SignUp(){
 
-    handleInputChange = event => {
-        const { name, value } = event.target
+    const [emailVal, setEmailVal] = useState('');
 
-        this.setState({
-            [name]: value
-        })
-    };
+    const handleEmailChange = (event) => {
+        // @TODO implement live validation
+        setEmailVal(event.target.value);
+      }
+    
 
 
-    render() {
+//class Login_SignUp extends Component {
+  //  componentDidMount() {
+    //    M.AutoInit();
+    //}
+
+    //state = {
+     //   username: "",
+      //  password: ""
+    //}
+
+    //handleInputChange = event => {
+       // const { name, value } = event.target
+
+       // this.setState({
+      //      [name]: value
+       // })
+    //};
+
+    //render() {
         return (
-
             <div>
                 <div className="center white-text">
                     <h4>HealthMate</h4>
@@ -74,7 +84,7 @@ class Login_SignUp extends Component {
                         <form className="col s12">
                             <div className="row">
                                 <div className="input-field col s12">
-                                    <input id="email" type="email" className="validate" />
+                                    <input id="email" type="email" className="validate" value={emailVal} onChange={handleEmailChange}/>
                                     <label htmlFor="email">Email</label>
                                 </div>
                             </div>
@@ -108,10 +118,9 @@ class Login_SignUp extends Component {
                     </div>
                 </div>
             </div>
-
-        );
+        )
     }
-}
+//}
 
 export default Login_SignUp;
 
