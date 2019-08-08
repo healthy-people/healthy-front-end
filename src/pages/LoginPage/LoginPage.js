@@ -3,7 +3,16 @@ import "./LoginPage.css";
 import M from "materialize-css";
 
 
+
 function Login_SignUp() {
+
+    useEffect(() => {
+        Auth.checkForExistingSession();
+      }, []);
+
+
+      
+
     const [loginType, setLoginType] = useState(LOGIN_TYPE.signin);
 
     const [emailVal, setEmailVal] = useState('');
@@ -49,25 +58,25 @@ function Login_SignUp() {
     const authSubmit = (event) => {
         event.preventDefault();
     
-        if (modalType === AUTH_MODAL_TYPES.signin) {
-          let signinObj = {
-            email_address: emailVal,
-            password: passwordVal
-          };
+        // if (modalType === AUTH_MODAL_TYPES.signin) {
+        //   let signinObj = {
+        //     email_address: emailVal,
+        //     password: passwordVal
+        //   };
     
-          Auth.sendSigninRequest(signinObj);
-        } else if (modalType === AUTH_MODAL_TYPES.signup) {
-          let signupObj = {
-            first_name: firstNameVal,
-            last_name: lastNameVal,
-            alias: usernameVal,
-            email: emailVal,
-            password: passwordVal,
-            password_confirm: confirmPasswordVal 
-          };
+        //   Auth.sendSigninRequest(signinObj);
+        // } else if (modalType === AUTH_MODAL_TYPES.signup) {
+        //   let signupObj = {
+        //     first_name: firstNameVal,
+        //     last_name: lastNameVal,
+        //     alias: usernameVal,
+        //     email: emailVal,
+        //     password: passwordVal,
+        //     password_confirm: confirmPasswordVal 
+        //   };
     
-          Auth.sendSignupRequest(signupObj);
-        }
+        //   Auth.sendSignupRequest(signupObj);
+        // }
       }
 
 
