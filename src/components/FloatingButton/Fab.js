@@ -10,29 +10,12 @@ class FloatingActionButton extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            type: ""
-        };
-        this.handleRun = this.handleRun.bind(this);
-        this.handleBike = this.handleBike.bind(this);
-        this.handleWater = this.handleWater.bind(this);
-        this.handleAbstain = this.handleAbstain.bind(this);
+
+        this.handleChange = this.handleChange.bind(this);
     }
-
-        handleRun() {
-            this.setState({ type: "run" })
-        }
-
-        handleBike() {
-            this.setState({ type: "bike" })
-        }
-
-        handleWater() {
-            this.setState({ type: "water" })
-        }
-
-        handleAbstain() {
-            this.setState({ type: "abstain" })
+        handleChange(event) {
+            const type = event.target.value;
+            this.props.onChange(type);
         }
 
         render() {
@@ -42,10 +25,10 @@ class FloatingActionButton extends Component {
                         <i className="fab large material-icons" tabIndex="1">add</i>
                     </a>
                     <ul>
-                        <li><a className="btn-floating green" onClick={this.handleRun}><i className="material-icons">directions_run</i></a></li>
-                        <li><a className="btn-floating yellow darken-1" onClick={this.handleBike}><i className="material-icons">directions_bike</i></a></li>
-                        <li><a className="btn-floating blue" onClick={this.handleWater}><i className="material-icons">local_drink</i></a></li>
-                        <li><a className="btn-floating red" onClick={this.handleAbstain}><i className="material-icons">smoke_free</i></a></li>
+                        <li><a className="btn-floating green" value="run" onClick={this.handleChange}><i className="material-icons">directions_run</i></a></li>
+                        <li><a className="btn-floating yellow darken-1" value="bike" onClick={this.handleChange}><i className="material-icons">directions_bike</i></a></li>
+                        <li><a className="btn-floating blue" value="water" onClick={this.handleChange}><i className="material-icons">local_drink</i></a></li>
+                        <li><a className="btn-floating red" value="abstain" onClick={this.handleChange}><i className="material-icons">smoke_free</i></a></li>
                     </ul>
                 </div>
             );
