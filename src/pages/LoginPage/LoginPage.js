@@ -19,7 +19,7 @@ function Login_SignUp() {
     const [modalType, setModalType] = useState(loginType.login);
     const [changeTypeBtnText, setChangeTypeBtnText] = useState(changeTypeBtnTextValues.login);
     const [modalIsOpen, setModalIsOpen] = useState(true);
-
+    //currently setModalIsOpen is not used
     const [usernameVal, setUsernameVal] = useState('');
     const [emailVal, setEmailVal] = useState('');
     const [passwordVal, setPasswordVal] = useState('');
