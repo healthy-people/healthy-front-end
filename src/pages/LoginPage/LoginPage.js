@@ -28,7 +28,7 @@ function Login_SignUp() {
     useEffect(() => {
         Auth.checkForExistingSession();
     }, []);
-    //for now assume no session
+    //for now assume no session or session check
 
     const toggleModalType = () => {
         let newModalType = modalType === loginType.login ? loginType.signup : loginType.login ;
@@ -131,7 +131,9 @@ function Login_SignUp() {
     return (
         <Modal
             isOpen={modalIsOpen}
-            contentLabel='Login Modal'>
+            contentLabel='Login Modal'
+            ariaHideApp={false}
+            >    
             <form>
                 <h5 className='modal-title'>{modalType}</h5>
                 {generateFormContents()}

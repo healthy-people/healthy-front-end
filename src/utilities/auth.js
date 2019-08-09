@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Pubsub from './pubsub';
-import { API, NOTIF } from './constantsS';
-import { deepCopyObj } from './helper';
+import { API, NOTIF } from './constants';
 //import { shallowCopyObj, deepCopyObj } from './helper';
+import { deepCopyObj } from './helper';
 import Data from './data';
 
 var Auth = {};
@@ -68,6 +68,7 @@ var user = {};
   }
 
   obj.sendSignupRequest = (params) => {
+    // **THIS IS HIT console.log('signup request hit');
     if (validateSignupRequest(params)) {
       console.log('sent signup request');
       axios.post(API.signup, {
@@ -153,6 +154,7 @@ var user = {};
 
 const validateSigninRequest = (params) => {
   // API requires either email or alias, and password
+  // checks if the correct values are in the params
   if ((params.username || params.email_address) && params.password) {
     return true;
   }
@@ -160,6 +162,7 @@ const validateSigninRequest = (params) => {
 }
 
 const validateSignupRequest = (params) => {
+  // **THIS IS HIT console.log('validate signin request hit');
   /* API requires all of:
     first_name
     last_name
@@ -168,6 +171,7 @@ const validateSignupRequest = (params) => {
     password
   */
   console.log(params);
+  console.log('this is where the params are logged')
   if (
       //params.first_name &&
     //params.last_name &&
@@ -176,9 +180,10 @@ const validateSignupRequest = (params) => {
     //params.alias &&
     params.password &&
     params.password_confirm) {
+      console.log('true returned');
     return true;
   }
-
+  console.log('false returned');
   return false;
 }
 
