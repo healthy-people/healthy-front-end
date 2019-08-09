@@ -8,6 +8,7 @@ class FloatingActionButton extends Component {
         M.AutoInit()
     }
 
+
     constructor(props) {
         super(props);
 
@@ -33,6 +34,7 @@ class FloatingActionButton extends Component {
                 </div>
             );
         }
+
     }
 
 

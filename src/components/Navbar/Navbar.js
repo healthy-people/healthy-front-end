@@ -26,7 +26,7 @@ class Navbar extends Component {
                         <div className="daysChallengeText col s12"><li>___ Days on Challenge</li></div>
                     </div>
                     <li><a href="#!"><i className="settingsIcon material-icons">settings</i><p>Settings</p></a></li>
-                    <div className="col s12" id="logoutBtn"><li><a className="waves-effect waves-light btn-large ">Logout</a></li></div>
+                    <div className="col s12" id="logoutBtn"><li><a className="waves-effect waves-light btn-large " href="#!">Logout</a></li></div>
                 </ul>
             </div>
         );
