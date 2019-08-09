@@ -25,10 +25,12 @@ class Login_SignUp extends Component {
         return (
 
             <div>
+                
                 <div className="center white-text">
                     <h4>HealthMate</h4>
                 </div>
                 <div className="loginContainer container ">
+                <img className="loginImg"/>
                     <div className="loginDiv row center ">
                         <a className="waves-effect waves-light btn modal-trigger" href="#modal1">Login</a>
                     </div>
