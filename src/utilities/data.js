@@ -1,8 +1,8 @@
-import axios from 'axios';
-import Pubsub from './pubsub';
-import Auth, { user } from './auth';
-import { API, NOTIF } from './constants';
-import { shallowCopyObj, orderByTimestamp, removeChannelsMemberOf } from './helper';
+//import axios from 'axios';
+//import Pubsub from './pubsub';
+//import Auth, { user } from './auth';
+//import { API, NOTIF } from './constantsS';
+//import { shallowCopyObj, orderByTimestamp, removeChannelsMemberOf } from './helper';
 
 // import io from 'socket.io-client';
 

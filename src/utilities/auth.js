@@ -1,7 +1,8 @@
 import axios from 'axios';
 import Pubsub from './pubsub';
-import { API, NOTIF } from './constants';
-import { shallowCopyObj, deepCopyObj } from './helper';
+import { API, NOTIF } from './constantsS';
+import { deepCopyObj } from './helper';
+//import { shallowCopyObj, deepCopyObj } from './helper';
 import Data from './data';
 
 var Auth = {};
@@ -132,7 +133,7 @@ var user = {};
         'x-session-token': session_token
       }
     }).then(response => {
-      if (response.status == 200) {
+      if (response.status === 200) {
         user = {};
         localStorage.setItem('x-session-token', '');
         Pubsub.publish(NOTIF.SIGN_OUT, null);
@@ -181,21 +182,21 @@ const validateSignupRequest = (params) => {
   return false;
 }
 
-// const validateUserData = (data) => {
-//   if (
-//       //data.alias &&
-//     //data.created &&
-//     data.username &&
-//     data.email_address &&
-//     //data.first_name &&
-//     //data.last_name &&
-//     data.updated &&
-//     data.user_id) {
-//     return true
-//   }
+const validateUserData = (data) => {
+  if (
+      //data.alias &&
+    //data.created &&
+    data.username &&
+    data.email_address &&
+    //data.first_name &&
+    //data.last_name &&
+    data.updated &&
+    data.user_id) {
+    return true
+  }
 
-//   return false;
-// }
+  return false;
+}
 
 export default Auth;
 
