@@ -21,8 +21,9 @@ function Login_SignUp() {
     const [modalIsOpen, setModalIsOpen] = useState(true);
 
     const [usernameVal, setUsernameVal] = useState('');
-    const [passwordVal, setPasswordVal] = useState('');
     const [emailVal, setEmailVal] = useState('');
+    const [passwordVal, setPasswordVal] = useState('');
+    const [confirmPasswordVal, setConfirmPasswordVal] = useState('');
 
     useEffect(() => {
         Auth.checkForExistingSession();
@@ -39,28 +40,33 @@ function Login_SignUp() {
     const handleUsernameChange = (event) => {
         setUsernameVal(event.target.value);
     }
-
-    const handlePasswordChange = (event) => {
-        // @TODO implement live validation
-        setPasswordVal(event.target.value);
-    }
-
     const handleEmailChange = (event) => {
         // @TODO implement live validation
         setEmailVal(event.target.value);
     }
+    const handlePasswordChange = (event) => {
+        // @TODO implement live validation
+        setPasswordVal(event.target.value);
+    }
+    const handleConfirmPasswordChange = (event) => {
+        setConfirmPasswordVal(event.target.value);
+      }
+
 
     const authSubmit = (event) => {
         event.preventDefault();
         if (modalType === loginType.login) {
             let signinObj = {
-                //email_address: emailVal,
-                //password: passwordVal
+                username: usernameVal,
+                password: passwordVal
             };
             Auth.sendSigninRequest(signinObj);
         } else if (modalType === loginType.signup) {
             let signupObj = {
-                //first_name: firstNameVal
+                email_address: emailVal,
+                username: usernameVal,
+                password: passwordVal,
+                password_confirm: confirmPasswordVal 
             };
             Auth.sendSignupRequest(signupObj);
         }
@@ -110,7 +116,7 @@ function Login_SignUp() {
                         </div>
                         <div className="row">
                             <div className="input-field col s12">
-                                <input id="confirmPassword" type="password" className="validate" />
+                                <input id="confirmPassword" type="password" className="validate" value={confirmPasswordVal} onChange={handleConfirmPasswordChange}/>
                                 <label htmlFor="confirmPassword">Confirm Password</label>
                             </div>
                         </div>
