@@ -71,11 +71,11 @@ var user = {};
     // **THIS IS HIT console.log('signup request hit');
     if (validateSignupRequest(params)) {
       console.log('sent signup request');
-      axios.post(API.signup, {
+      axios.post('/api/user', {
         // first_name: params.first_name,
         // last_name: params.last_name,
+        email_address: params.email_address,
         username: params.username,
-        email_address: params.email,
         password: params.password,
         password_confirm: params.password_confirm
       }).then(response => {
@@ -156,6 +156,7 @@ const validateSigninRequest = (params) => {
   // API requires either email or alias, and password
   // checks if the correct values are in the params
   if ((params.username || params.email_address) && params.password) {
+    //if (params.username && params.password) {
     return true;
   }
   return false;
@@ -176,14 +177,14 @@ const validateSignupRequest = (params) => {
       //params.first_name &&
     //params.last_name &&
     params.username &&
-    params.email &&
+    params.email_address &&
     //params.alias &&
     params.password &&
     params.password_confirm) {
-      console.log('true returned');
+      console.log('trueE returned');
     return true;
   }
-  console.log('false returned');
+  console.log('falseE returned');
   return false;
 }
 

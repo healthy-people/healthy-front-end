@@ -16,6 +16,7 @@ const loginType = {
 
 function Login_SignUp() {
 
+
     const [modalType, setModalType] = useState(loginType.login);
     const [changeTypeBtnText, setChangeTypeBtnText] = useState(changeTypeBtnTextValues.login);
     const [modalIsOpen, setModalIsOpen] = useState(true);
@@ -51,7 +52,6 @@ function Login_SignUp() {
     const handleConfirmPasswordChange = (event) => {
         setConfirmPasswordVal(event.target.value);
       }
-
 
     const authSubmit = (event) => {
         event.preventDefault();
