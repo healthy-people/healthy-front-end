@@ -63,7 +63,7 @@ function Login_SignUp() {
             Auth.sendSigninRequest(signinObj);
         } else if (modalType === loginType.signup) {
             let signupObj = {
-                email_address: emailVal,
+                email: emailVal,
                 username: usernameVal,
                 password: passwordVal,
                 password_confirm: confirmPasswordVal 

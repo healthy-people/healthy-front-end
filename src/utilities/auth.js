@@ -34,7 +34,7 @@ var user = {};
     // forcing email at the moment - may implement more elegant logic later
     if (validateSigninRequest(params)) {
       let signinObj = {
-        email_address: params.email_address,
+        email: params.email,
         password: params.password
       };
       // this extra call is not ideal, but we need to hack our way to getting the correct info on signin.  In the future, the API will need to be refactored to send back all the necessary info
@@ -75,13 +75,13 @@ var user = {};
       axios.post('/api/user', {
         // first_name: params.first_name,
         // last_name: params.last_name,
-        email_address: params.email_address,
+        email: params.email,
         username: params.username,
         password: params.password,
         password_confirm: params.password_confirm
       }).then(response => {
         let signinObj = {
-          email_address: params.email,
+          email: params.email,
           password: params.password
         };
         console.log(signinObj);
@@ -156,7 +156,7 @@ var user = {};
 const validateSigninRequest = (params) => {
   // API requires either email or alias, and password
   // checks if the correct values are in the params
-  if ((params.username || params.email_address) && params.password) {
+  if ((params.username || params.email) && params.password) {
     //if (params.username && params.password) {
     return true;
   }
@@ -178,7 +178,8 @@ const validateSignupRequest = (params) => {
       //params.first_name &&
     //params.last_name &&
     params.username &&
-    params.email_address &&
+    params.email &&
+    //params.email_address &&
     //params.alias &&
     params.password &&
     params.password_confirm) {
@@ -194,7 +195,8 @@ const validateUserData = (data) => {
       //data.alias &&
     //data.created &&
     data.username &&
-    data.email_address &&
+    data.email &&
+    //params.email_address &&
     //data.first_name &&
     //data.last_name &&
     data.updated &&
