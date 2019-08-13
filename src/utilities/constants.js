@@ -1,9 +1,9 @@
 // API routes
 export const API = {
-    getUsers: '/api/users',
+    //-getUsers: '/api/users',
     //getUserById: '/api/user/',
-    signin: '/api/users/login',
-    signup: '/api/users',
+    //-signin: '/api/users/login',
+    //-signup: '/api/users',
     //signout: '/api/users/login',
 };
 

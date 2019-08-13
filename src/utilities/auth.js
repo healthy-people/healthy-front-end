@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Pubsub from './pubsub';
-import { API, NOTIF } from './constants';
+//import { API, NOTIF } from './constants';
+import { NOTIF } from './constants';
 //import { shallowCopyObj, deepCopyObj } from './helper';
 import { deepCopyObj } from './helper';
 import Data from './data';
@@ -14,9 +15,8 @@ var user = {};
 
   obj.checkForExistingSession = () => {
     let session_token = localStorage.getItem('x-session-token');
-
     if (session_token) {
-      axios.get(API.getUsers, { headers: { 'x-session-token': session_token } }).then(response => {
+      axios.get('/api/users', { headers: { 'x-session-token': session_token } }).then(response => {
         if (validateUserData(response.data)) {
           user = deepCopyObj(response.data);
         }
@@ -34,14 +34,15 @@ var user = {};
     // forcing email at the moment - may implement more elegant logic later
     if (validateSigninRequest(params)) {
       let signinObj = {
-        email: params.email,
+        username: params.username,
+        //email: params.email,
         password: params.password
       };
       // this extra call is not ideal, but we need to hack our way to getting the correct info on signin.  In the future, the API will need to be refactored to send back all the necessary info
-      axios.post(API.signin, signinObj).then(response => {
+      axios.post('/api/users/login', signinObj).then(response => {
         let session_token = response.headers['x-session-token'];
         localStorage.setItem('x-session-token', session_token);
-        axios.get(API.getUsers, { headers: { 'x-session-token': session_token } }).then(response => {
+        axios.get('/api/users', { headers: { 'x-session-token': session_token } }).then(response => {
           user = deepCopyObj(response.data);
           console.log(user);
           Pubsub.publish(NOTIF.SIGN_IN, null);
@@ -86,10 +87,10 @@ var user = {};
         };
         console.log(signinObj);
         // these TWO extra calls are not ideal, but we need to hack our way to getting the correct info on signup.  In the future, the API will need to be refactored to send back all the necessary info
-        axios.post(API.signin, signinObj).then(signinResp => {
+        axios.post('/api/user/login', signinObj).then(signinResp => {
           let session_token = signinResp.headers['x-session-token'];
           localStorage.setItem('x-session-token', session_token);
-          axios.get(API.getUsers, { headers: { 'x-session-token': session_token } }).then(getResponse => {
+          axios.get('/api/user/', { headers: { 'x-session-token': session_token } }).then(getResponse => {
             user = deepCopyObj(getResponse.data);
             console.log(user);
             Pubsub.publish(NOTIF.SIGN_IN, null);
@@ -129,7 +130,8 @@ var user = {};
     let session_token = localStorage.getItem('x-session-token');
 
     axios({
-      url: API.signout,
+      url: '/api/user/login',
+      //user or user?
       method: 'delete',
       headers: {
         'x-session-token': session_token
