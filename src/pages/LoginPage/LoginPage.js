@@ -70,6 +70,7 @@ function Login_SignUp() {
             };
             Auth.sendSignupRequest(signupObj);
         }
+        setModalIsOpen(false);
     }
 
     const generateFormContents = () => {

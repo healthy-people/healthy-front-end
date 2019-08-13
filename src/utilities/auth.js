@@ -38,11 +38,13 @@ var user = {};
         //email: params.email,
         password: params.password
       };
+      console.log('valid signin request');
+      console.log(signinObj);
       // this extra call is not ideal, but we need to hack our way to getting the correct info on signin.  In the future, the API will need to be refactored to send back all the necessary info
-      axios.post('/api/users/login', signinObj).then(response => {
+      axios.post('/api/user/login', signinObj).then(response => {
         let session_token = response.headers['x-session-token'];
         localStorage.setItem('x-session-token', session_token);
-        axios.get('/api/users', { headers: { 'x-session-token': session_token } }).then(response => {
+        axios.get('/api/user', { headers: { 'x-session-token': session_token } }).then(response => {
           user = deepCopyObj(response.data);
           console.log(user);
           Pubsub.publish(NOTIF.SIGN_IN, null);
@@ -85,6 +87,7 @@ var user = {};
           email: params.email,
           password: params.password
         };
+        console.log('(sign up requst) sigin obj is: ')
         console.log(signinObj);
         // these TWO extra calls are not ideal, but we need to hack our way to getting the correct info on signup.  In the future, the API will need to be refactored to send back all the necessary info
         axios.post('/api/user/login', signinObj).then(signinResp => {
@@ -92,6 +95,7 @@ var user = {};
           localStorage.setItem('x-session-token', session_token);
           axios.get('/api/user/', { headers: { 'x-session-token': session_token } }).then(getResponse => {
             user = deepCopyObj(getResponse.data);
+            console.log('post ot login:')
             console.log(user);
             Pubsub.publish(NOTIF.SIGN_IN, null);
           }).catch(error => {
