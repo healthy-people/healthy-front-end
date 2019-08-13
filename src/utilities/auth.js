@@ -84,7 +84,8 @@ var user = {};
         password_confirm: params.password_confirm
       }).then(response => {
         let signinObj = {
-          email: params.email,
+          username: params.username,
+          //email: params.email,
           password: params.password
         };
         console.log('(sign up requst) sigin obj is: ')
