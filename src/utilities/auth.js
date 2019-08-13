@@ -16,11 +16,18 @@ var user = {};
   obj.checkForExistingSession = () => {
     let session_token = localStorage.getItem('x-session-token');
     if (session_token) {
-      axios.get('/api/users', { headers: { 'x-session-token': session_token } }).then(response => {
+      axios.get('/api/user', { headers: { 'x-session-token': session_token } }).then(response => {
+        console.log(response);
         if (validateUserData(response.data)) {
           user = deepCopyObj(response.data);
+          console.log('user is validated');
+          if (user == {}){
+            console.log('no existing session');
+          } else {
+            console.log('existing session');
+          }
         }
-        console.log('check of existing session');
+        console.log('user user');
         console.log(user);
         Pubsub.publish(NOTIF.SIGN_IN, null);
       }).catch(error => {
@@ -164,14 +171,15 @@ const validateSigninRequest = (params) => {
   // API requires either email or alias, and password
   // checks if the correct values are in the params
   if ((params.username || params.email) && params.password) {
+    console.log('user is validated');
     //if (params.username && params.password) {
     return true;
   }
+  console.log('user is not validated');
   return false;
 }
 
 const validateSignupRequest = (params) => {
-  // **THIS IS HIT console.log('validate signin request hit');
   /* API requires all of:
     first_name
     last_name
@@ -201,16 +209,18 @@ const validateUserData = (data) => {
   if (
       //data.alias &&
     //data.created &&
-    data.username &&
-    data.email &&
+    data.username 
+    //data.email &&
     //params.email_address &&
     //data.first_name &&
     //data.last_name &&
-    data.updated &&
-    data.user_id) {
+    //data.updated &&
+    //data.user_id
+    ) {
+      console.log("validate user data true");
     return true
   }
-
+  console.log("validate user data false");
   return false;
 }
 

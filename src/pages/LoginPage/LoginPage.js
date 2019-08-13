@@ -19,8 +19,8 @@ function Login_SignUp() {
 
     const [modalType, setModalType] = useState(loginType.login);
     const [changeTypeBtnText, setChangeTypeBtnText] = useState(changeTypeBtnTextValues.login);
-    const [modalIsOpen, setModalIsOpen] = useState(true);
-    //currently setModalIsOpen is not used
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
     const [usernameVal, setUsernameVal] = useState('');
     const [emailVal, setEmailVal] = useState('');
     const [passwordVal, setPasswordVal] = useState('');
@@ -28,8 +28,8 @@ function Login_SignUp() {
 
     useEffect(() => {
         Auth.checkForExistingSession();
+        setModalIsOpen(true);
     }, []);
-    //for now assume no session or session check
 
     const toggleModalType = () => {
         let newModalType = modalType === loginType.login ? loginType.signup : loginType.login ;
