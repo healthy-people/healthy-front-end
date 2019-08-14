@@ -16,7 +16,6 @@ const loginType = {
 
 function Login_SignUp() {
 
-
     const [modalType, setModalType] = useState(loginType.login);
     const [changeTypeBtnText, setChangeTypeBtnText] = useState(changeTypeBtnTextValues.login);
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -60,6 +59,8 @@ function Login_SignUp() {
                 username: usernameVal,
                 password: passwordVal
             };
+            console.log('sign in obj');
+            console.log(signinObj);
             Auth.sendSigninRequest(signinObj);
         } else if (modalType === loginType.signup) {
             let signupObj = {
@@ -68,6 +69,7 @@ function Login_SignUp() {
                 password: passwordVal,
                 password_confirm: confirmPasswordVal 
             };
+            console.log(signupObj);
             Auth.sendSignupRequest(signupObj);
         }
         setModalIsOpen(false);
@@ -99,7 +101,7 @@ function Login_SignUp() {
                     <form className="col s12">
                         <div className="row">
                             <div className="input-field col s12">
-                                <input id="email" type="email" className="validate" value={emailVal} onChange={handleEmailChange}/>
+                                <input id="signUpEmail" type="email" className="validate" value={emailVal} onChange={handleEmailChange}/>
                                 <label htmlFor="email">Email</label>
                             </div>
                         </div>

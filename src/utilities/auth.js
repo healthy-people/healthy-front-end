@@ -21,7 +21,7 @@ var user = {};
         if (validateUserData(response.data)) {
           user = deepCopyObj(response.data);
           console.log('user is validated');
-          if (user == {}){
+          if (user === {}){
             console.log('no existing session');
           } else {
             console.log('existing session');
@@ -39,16 +39,19 @@ var user = {};
   obj.sendSigninRequest = (params) => {
     // API require email OR alias
     // forcing email at the moment - may implement more elegant logic later
+    console.log(params);
     if (validateSigninRequest(params)) {
       let signinObj = {
         username: params.username,
         //email: params.email,
         password: params.password
       };
+      console.log(params);
       console.log('valid signin request');
       console.log(signinObj);
       // this extra call is not ideal, but we need to hack our way to getting the correct info on signin.  In the future, the API will need to be refactored to send back all the necessary info
       axios.post('/api/user/login', signinObj).then(response => {
+        //DOES NOT CALL console.log(signinObj);
         let session_token = response.headers['x-session-token'];
         localStorage.setItem('x-session-token', session_token);
         axios.get('/api/user', { headers: { 'x-session-token': session_token } }).then(response => {
@@ -170,6 +173,7 @@ var user = {};
 const validateSigninRequest = (params) => {
   // API requires either email or alias, and password
   // checks if the correct values are in the params
+  //if ((params.username || params.email) && params.password) {
   if ((params.username || params.email) && params.password) {
     console.log('user is validated');
     //if (params.username && params.password) {
