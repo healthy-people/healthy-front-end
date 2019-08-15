@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./LoginPage.css";
 import Modal from 'react-modal';
-import Auth from '../../utilities/auth';
+import Auth from '../../utilities/authorizer';
 //import { NOTIF, AUTH_MODAL_TYPES } from '../../utilities/constants';
 
 const changeTypeBtnTextValues = {
@@ -59,7 +59,7 @@ function Login_SignUp() {
                 username: usernameVal,
                 password: passwordVal
             };
-            console.log('sign in obj');
+            console.log('sign in obj: ');
             console.log(signinObj);
             Auth.sendSigninRequest(signinObj);
         } else if (modalType === loginType.signup) {
@@ -69,6 +69,7 @@ function Login_SignUp() {
                 password: passwordVal,
                 password_confirm: confirmPasswordVal 
             };
+            console.log('sign up obj: ');
             console.log(signupObj);
             Auth.sendSignupRequest(signupObj);
         }

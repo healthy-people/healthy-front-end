@@ -27,8 +27,6 @@ var user = {};
             console.log('existing session');
           }
         }
-        console.log('user user');
-        console.log(user);
         Pubsub.publish(NOTIF.SIGN_IN, null);
       }).catch(error => {
         console.log(error);
@@ -191,8 +189,6 @@ const validateSignupRequest = (params) => {
     alias
     password
   */
-  console.log(params);
-  console.log('this is where the params are logged')
   if (
       //params.first_name &&
     //params.last_name &&
@@ -202,10 +198,10 @@ const validateSignupRequest = (params) => {
     //params.alias &&
     params.password &&
     params.password_confirm) {
-      console.log('trueE returned');
+      console.log('signup validation is true');
     return true;
   }
-  console.log('falseE returned');
+  console.log('signup validation is false');
   return false;
 }
 
@@ -221,10 +217,10 @@ const validateUserData = (data) => {
     //data.updated &&
     //data.user_id
     ) {
-      console.log("validate user data true");
+      console.log("user data validates as true");
     return true
   }
-  console.log("validate user data false");
+  console.log("user data validates as false");
   return false;
 }
 
