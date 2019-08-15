@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import "./LoginPage.css";
-import Modal from 'react-modal';
+import React, { useState, useEffect } from './node_modules/react';
+import "./LoginSignUpModal.css";
+import Modal from './node_modules/react-modal';
 import Auth from '../../utilities/authorizer';
 import Pubsub from '../../utilities/pubsub';
 //import { NOTIF, AUTH_MODAL_TYPES } from '../../utilities/constants';
@@ -15,11 +15,11 @@ const loginType = {
     signup: 'Sign Up'
 };
 
-function Login_SignUp() {
+function LoginSignUpModal() {
 
     const [modalType, setModalType] = useState(loginType.login);
     const [changeTypeBtnText, setChangeTypeBtnText] = useState(changeTypeBtnTextValues.login);
-    const [modalIsOpen, setModalIsOpen] = useState(true);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     
     const [usernameVal, setUsernameVal] = useState('');
@@ -37,6 +37,7 @@ function Login_SignUp() {
     }, []);
 
     const toggleModalType = () => {
+        //if modal type = login, then toggle to signup, if not then login
         let newModalType = modalType === loginType.login ? loginType.signup : loginType.login;
         let newChangeBtnText = modalType === loginType.login ? changeTypeBtnTextValues.signup : changeTypeBtnTextValues.login;
         setModalType(newModalType);
@@ -171,4 +172,4 @@ function Login_SignUp() {
     )
 }
 
-export default Login_SignUp;
+export default LoginSignUpModal;

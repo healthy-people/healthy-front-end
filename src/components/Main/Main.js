@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 //import './main.css';
 
 import Pubsub from '../../utilities/pubsub';
+import LoginSignUpModal from '../LoginSignUpModal/LoginSignUpModal';
 import Challenge from '../Challenge/Challenge';
 
 function Main() {
@@ -35,8 +36,8 @@ function Main() {
 
   return (
     <div className='container-fluid'>
+      <LoginSignUpModal />
       <div className='row'>
-
         <Challenge selectedChallengeId={selectedChallengeId} />
       </div>
     </div>
