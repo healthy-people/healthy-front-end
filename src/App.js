@@ -5,10 +5,11 @@ import HomePage from "./pages/HomePage/HomePage";
 import PickChallenge from "./pages/ChallengePickPage/ChallengePickPage"
 import './App.css';
 
+// @TODO is pubsub necessary to show the login modal?
 import Pubsub from './utilities/pubsub';
 
 import Navbar from './components/Navbar/Navbar';
-import Main from './components/Navbar/Main';
+import Main from './components/Main/Main';
 
 function App() {
   return (

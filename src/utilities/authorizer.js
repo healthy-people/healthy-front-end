@@ -11,7 +11,6 @@ var Auth = {};
 var user = {};
 
 (function (obj) {
-  // @TODO 
 
   obj.checkForExistingSession = () => {
     let session_token = localStorage.getItem('x-session-token');
@@ -27,7 +26,7 @@ var user = {};
             console.log('existing session');
           }
         }
-        Pubsub.publish(NOTIF.SIGN_IN, null);
+        Pubsub.publish('login', null);
       }).catch(error => {
         console.log(error);
       });
@@ -55,13 +54,13 @@ var user = {};
         axios.get('/api/user', { headers: { 'x-session-token': session_token } }).then(response => {
           user = deepCopyObj(response.data);
           console.log(user);
-          Pubsub.publish(NOTIF.SIGN_IN, null);
+          Pubsub.publish('login', null);
         }).catch(error => {
           console.log(error);
           let errorObj = {
             message: 'Error signing in, please try again'
           };
-          Pubsub.publish(NOTIF.AUTH_ERROR, errorObj);
+          Pubsub.publish('auth_error', errorObj);
         });
       }).catch(error => {
         // @TODO return error codes and display helpful messages to the user, i.e. incorrect password, etc.
@@ -69,13 +68,13 @@ var user = {};
         let errorObj = {
           message: 'Error signing in, please try again'
         };
-        Pubsub.publish(NOTIF.AUTH_ERROR, errorObj);
+        Pubsub.publish('auth_error', errorObj);
       });
     } else {
       let errorObj = {
         message: 'Please fill in the required fields'
       };
-      Pubsub.publish(NOTIF.AUTH_ERROR, errorObj);
+      Pubsub.publish('auth_error', errorObj);
     }
   }
 
@@ -106,20 +105,20 @@ var user = {};
             user = deepCopyObj(getResponse.data);
             console.log('post ot login:')
             console.log(user);
-            Pubsub.publish(NOTIF.SIGN_IN, null);
+            Pubsub.publish('login', null);
           }).catch(error => {
             console.log(error);
             let errorObj = {
               message: 'Error signing up, please try again'
             };
-            Pubsub.publish(NOTIF.AUTH_ERROR, errorObj);
+            Pubsub.publish('auth_error', errorObj);
           });
         }).catch(error => {
           console.log(error);
           let errorObj = {
             message: 'Error signing up, please try again'
           };
-          Pubsub.publish(NOTIF.AUTH_ERROR, errorObj);
+          Pubsub.publish('auth_error', errorObj);
         });
       }).catch(error => {
         // @TODO return error codes and display helpful messages to the user, i.e. incorrect password, etc.
@@ -127,21 +126,19 @@ var user = {};
         let errorObj = {
           message: 'Error signing up, please try again'
         };
-        Pubsub.publish(NOTIF.AUTH_ERROR, errorObj);
+        Pubsub.publish('auth_error', errorObj);
       });
     } else {
       let errorObj = {
         message: 'Please fill out all fields'
       };
-      Pubsub.publish(NOTIF.AUTH_ERROR, errorObj);
+      Pubsub.publish('auth_error', errorObj);
     }
-
   }
 
   obj.sendSignoutRequest = () => {
     // @TODO need to verify what direction we're taking with the session token business
     let session_token = localStorage.getItem('x-session-token');
-
     axios({
       url: '/api/user/login',
       //user or user?
@@ -153,7 +150,7 @@ var user = {};
       if (response.status === 200) {
         user = {};
         localStorage.setItem('x-session-token', '');
-        Pubsub.publish(NOTIF.SIGN_OUT, null);
+        Pubsub.publish('logout', null);
         Data.handleSignout();
         console.log('signout success');
       } else {

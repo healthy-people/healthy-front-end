@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import './main.css';
+//import './main.css';
 
 import Pubsub from '../../utilities/pubsub';
-
+import Challenge from '../Challenge/Challenge';
 
 function Main() {
 
   const [authenticated, setAuthenticated] = useState(false);
   const [selectedChallengeId, setSelectedChallengeId] = useState('');
 
-  // @TODO use pubsub to subscribe to group changes and pass down as appropriate
   useEffect(() => {
     Pubsub.subscribe('login', this, handleSignin);
     Pubsub.subscribe('logout', this, handleSignout);
@@ -20,15 +19,9 @@ function Main() {
     });
   }, []);
 
-  //useEffect(() => {
-   // if (selectedGroupId) {
-     // Data.changeSocketRoom(selectedGroupId);
-   // }
- // }, [selectedGroupId]);
-
   const handleSignout = () => {
     setAuthenticated(false);
-    setSelectedGroupId('');
+    //setSelectedGroupId('');
   }
 
   const handleSignin = () => {
@@ -37,12 +30,13 @@ function Main() {
 
   const handleChallenges = (newChallenge) => {
     console.log(newChallenge);
-    setSelectedChapllengeId(newChallenge);
+    //setSelectedChapllengeId(newChallenge);
   }
 
   return (
     <div className='container-fluid'>
       <div className='row'>
+
         <Challenge selectedChallengeId={selectedChallengeId} />
       </div>
     </div>
