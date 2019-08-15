@@ -2,23 +2,24 @@ import React, { useState, useEffect } from 'react';
 import "./LoginPage.css";
 import Modal from 'react-modal';
 import Auth from '../../utilities/authorizer';
+import Pubsub from '../../utilities/pubsub';
 //import { NOTIF, AUTH_MODAL_TYPES } from '../../utilities/constants';
 
 const changeTypeBtnTextValues = {
     login: 'Don\'t have an account?',
     signup: 'Already have an account?'
-  };
+};
 
 const loginType = {
     login: 'Log In',
     signup: 'Sign Up'
-  };
+};
 
 function Login_SignUp() {
 
     const [modalType, setModalType] = useState(loginType.login);
     const [changeTypeBtnText, setChangeTypeBtnText] = useState(changeTypeBtnTextValues.login);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalIsOpen, setModalIsOpen] = useState(true);
 
     const [usernameVal, setUsernameVal] = useState('');
     const [emailVal, setEmailVal] = useState('');
@@ -26,16 +27,21 @@ function Login_SignUp() {
     const [confirmPasswordVal, setConfirmPasswordVal] = useState('');
 
     useEffect(() => {
-        Auth.checkForExistingSession();
-        setModalIsOpen(true);
+        Pubsub.subscribe('login', this, closeModal);
+        //Auth.checkForExistingSession();
+        //setModalIsOpen(true);
     }, []);
 
     const toggleModalType = () => {
-        let newModalType = modalType === loginType.login ? loginType.signup : loginType.login ;
+        let newModalType = modalType === loginType.login ? loginType.signup : loginType.login;
         let newChangeBtnText = modalType === loginType.login ? changeTypeBtnTextValues.signup : changeTypeBtnTextValues.login;
         setModalType(newModalType);
         setChangeTypeBtnText(newChangeBtnText);
     }
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+      }
 
     const handleUsernameChange = (event) => {
         setUsernameVal(event.target.value);
@@ -50,7 +56,7 @@ function Login_SignUp() {
     }
     const handleConfirmPasswordChange = (event) => {
         setConfirmPasswordVal(event.target.value);
-      }
+    }
 
     const authSubmit = (event) => {
         event.preventDefault();
@@ -67,13 +73,13 @@ function Login_SignUp() {
                 email: emailVal,
                 username: usernameVal,
                 password: passwordVal,
-                password_confirm: confirmPasswordVal 
+                password_confirm: confirmPasswordVal
             };
             console.log('sign up obj: ');
             console.log(signupObj);
             Auth.sendSignupRequest(signupObj);
         }
-        setModalIsOpen(false);
+        //setModalIsOpen(false);
     }
 
     const generateFormContents = () => {
@@ -83,13 +89,13 @@ function Login_SignUp() {
                     <form className="col s12">
                         <div className="row">
                             <div className="input-field col s12">
-                                <input id="loginUsername" type="text" className="validate" value={usernameVal} onChange={handleUsernameChange}/>
+                                <input id="loginUsername" type="text" className="validate" value={usernameVal} onChange={handleUsernameChange} />
                                 <label htmlFor="loginUsername">Username</label>
                             </div>
                         </div>
                         <div className="row">
                             <div className="input-field col s12">
-                                <input id="loginPassword" type="password" className="validate" value={passwordVal} onChange={handlePasswordChange}/>
+                                <input id="loginPassword" type="password" className="validate" value={passwordVal} onChange={handlePasswordChange} />
                                 <label htmlFor="loginPassword">Password</label>
                             </div>
                         </div>
@@ -102,25 +108,25 @@ function Login_SignUp() {
                     <form className="col s12">
                         <div className="row">
                             <div className="input-field col s12">
-                                <input id="signUpEmail" type="email" className="validate" value={emailVal} onChange={handleEmailChange}/>
+                                <input id="signUpEmail" type="email" className="validate" value={emailVal} onChange={handleEmailChange} />
                                 <label htmlFor="email">Email</label>
                             </div>
                         </div>
                         <div className="row">
                             <div className="input-field col s12">
-                                <input id="signUpUsername" type="text" className="validate" value={usernameVal} onChange={handleUsernameChange}/>
+                                <input id="signUpUsername" type="text" className="validate" value={usernameVal} onChange={handleUsernameChange} />
                                 <label htmlFor="signUpUsername">Username</label>
                             </div>
                         </div>
                         <div className="row">
                             <div className="input-field col s12">
-                                <input id="signUpPassword" type="password" className="validate" value={passwordVal} onChange={handlePasswordChange}/>
+                                <input id="signUpPassword" type="password" className="validate" value={passwordVal} onChange={handlePasswordChange} />
                                 <label htmlFor="signUpPassword">Password</label>
                             </div>
                         </div>
                         <div className="row">
                             <div className="input-field col s12">
-                                <input id="confirmPassword" type="password" className="validate" value={confirmPasswordVal} onChange={handleConfirmPasswordChange}/>
+                                <input id="confirmPassword" type="password" className="validate" value={confirmPasswordVal} onChange={handleConfirmPasswordChange} />
                                 <label htmlFor="confirmPassword">Confirm Password</label>
                             </div>
                         </div>
@@ -132,14 +138,23 @@ function Login_SignUp() {
         }
     }
 
+    const generateErrorInfo = () => {
+        return (
+          <span className='text-danger'>{errorMessage}</span>
+        );
+      }
+
     return (
         <Modal
             isOpen={modalIsOpen}
             contentLabel='Login Modal'
             ariaHideApp={false}
-            >    
+        >
+            <h5 className='modal-title'>{modalType}</h5>
+            <div className='error-info'>
+                {generateErrorInfo()}
+            </div>
             <form>
-                <h5 className='modal-title'>{modalType}</h5>
                 {generateFormContents()}
                 <button type='button' className='btn btn-link' onClick={toggleModalType}>{changeTypeBtnText}</button>
                 <div className='modal-footer row center'>
