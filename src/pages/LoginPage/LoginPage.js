@@ -30,6 +30,9 @@ function Login_SignUp() {
         Pubsub.subscribe('login', this, closeModal);
         //Auth.checkForExistingSession();
         //setModalIsOpen(true);
+        return(() => {
+            Pubsub.unsubscribe('login', this);
+        });
     }, []);
 
     const toggleModalType = () => {
@@ -41,8 +44,7 @@ function Login_SignUp() {
 
     const closeModal = () => {
         setModalIsOpen(false);
-      }
-
+    }
     const handleUsernameChange = (event) => {
         setUsernameVal(event.target.value);
     }
