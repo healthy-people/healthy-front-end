@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./Fab.css"
 import M from "materialize-css";
+import PickChallenge from "../../pages/ChallengePickPage/ChallengePickPage"
 
 
 class FloatingActionButton extends Component {
@@ -12,10 +13,11 @@ class FloatingActionButton extends Component {
         super(props);
 
         this.handleChange = this.handleChange.bind(this);
+        this.state = {challenge:''};
     }
-        handleChange(event) {
-            const type = event.target.value;
-            this.props.onChange(type);
+        handleChange =(event) => {
+            const challenge = event.target.value;
+            this.props.onSelect(challenge)
         }
 
         render() {
@@ -30,7 +32,7 @@ class FloatingActionButton extends Component {
                         <li><a className="btn-floating blue" value="water" onClick={this.handleChange}><i className="material-icons">local_drink</i></a></li>
                         <li><a className="btn-floating red" value="abstain" onClick={this.handleChange}><i className="material-icons">smoke_free</i></a></li>
                     </ul>
-                </div>
+                    </div>
             );
         }
     }

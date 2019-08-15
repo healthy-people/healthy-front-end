@@ -13,18 +13,13 @@ class WhatLength extends React.Component {
         this.handleMonth = this.handleMonth.bind(this);
     }
 
-    handleDay() {
-        this.setState({ length: "day" });
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        })
     }
-
-    handleWeek() {
-        this.setState({ length: "week" });
-    }
-
-    handleMonth() {
-        this.setState({ length: "month" });
-    }
-
+    
     render() {
         return (
             <div className="container">
@@ -33,23 +28,23 @@ class WhatLength extends React.Component {
                     <form action="#">
                         <p>
                             <label>
-                                <input name="1day" type="radio" onClick={this.handleDay} />
+                                <input name="day" type="radio" onClick={this.handleInputChange} />
                                 <span>1 day</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input name="1week" type="radio" onClick={this.handleWeek} />
+                                <input name="week" type="radio" onClick={this.handleInputChange} />
                                 <span>1 week</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input name="1month" type="radio" onClick={this.handleMonth} />
+                                <input name="month" type="radio" onClick={this.handleInputChange} />
                                 <span>1 month</span>
                             </label>
                         </p>
-                        <div className="row">
+                        {/* <div className="row">
                             <p>
                                 <div className='input-field col s6'>
                                     <input placeholder="#" id="customNumber" type='number' />
@@ -64,7 +59,7 @@ class WhatLength extends React.Component {
                                     </select>
                                 </div>
                             </p>
-                        </div>
+                        </div> */}
                     </form>
                 </div>
             </div>
