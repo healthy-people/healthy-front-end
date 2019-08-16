@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login_SignUp from "./pages/LoginPage/LoginPage"
 import HomePage from "./pages/HomePage/HomePage";
-import Run from "./pages/Bike/Bike";
+import Run from "./pages/Run/Run";
 import './App.css';
 import Bike from './pages/Bike/Bike';
 import Abstain from './pages/Abstaining/Abstaining';

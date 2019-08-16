@@ -3,7 +3,7 @@ import WhatLength from "../../components/WhatLength/WhatLength"
 import "./Bike.css"
 
 class Bike extends React.Component {
-    
+
     state = {
         miles: ""
     }
@@ -25,51 +25,48 @@ class Bike extends React.Component {
 
     handleSubmitSpeed = event => {
         event.preventDefault();
-        alert(`Speed challenge created! Whoever can clock the fastest time in ${this.state.miles} wins!`);
+        alert(`Speed challenge created! Whoever can clock the fastest time in ${this.state.miles} miles wins!`);
     };
 
     render() {
         return (
             <div>
-                <WhatLength/>
-                    <div className="container">
-                        <div className="row">
-                            <h3>Would you like this to be a distance or speed challenge?</h3>
-                            <form action="#">
-                                <p>
-                                    <label>
-                                        <input name="distance" type="radio" onClick={this.handleSubmitDistance} />
-                                        <span>Distance</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input name="speed" type="radio" onClick={this.showSpeed} />
-                                        <span>Speed</span>
-                                    </label>
-                                </p>
-                            </form>
-                        </div>
-                        <div className="row hide" id="speed">
-                            <h3>How many miles would you like to set for the speed challenge?</h3>
-                            <form action="#">
-                                <p>
-                                    <div className='input-field col s3'>
-                                        <input placeholder="#" name="miles" value={this.state.miles} onChange={this.handleInputChange} />
-                                        <label for="miles"></label>
-                                        {/* <select>
-                                    <option value="" disabled selected>Choose your option</option>
-                                    <option value="miles">Mile(s)</option>
-                                    <option value="kilometers">Kilometers(s)</option>
-                                </select> */}
-                                    </div>
-                                </p>
-                            </form>
-                            <a class="waves-effect waves-light btn" onClick={this.handleSubmitSpeed}>Finish</a>
-                        </div>
+                <WhatLength />
+                <div className="container">
+                    <div className="row">
+                        <h5>Would you like this to be a distance or speed challenge?</h5>
+                        <form action="#">
+                            <p>
+                                <label>
+                                    <input name="distance" type="radio" onClick={this.handleSubmitDistance} />
+                                    <span>Distance</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input name="speed" type="radio" onClick={this.showSpeed} />
+                                    <span>Speed</span>
+                                </label>
+                            </p>
+                        </form>
                     </div>
+                    <div className="row hide" id="speed">
+                        <h5>How many miles would you like to set for the speed challenge?</h5>
+                        <form action="#">
+                            <div className="row">
+                                <div className='input-field col s3'>
+                                    <input id="bikeMiles" name="miles" type="number" value={this.state.miles} onChange={this.handleInputChange} />
+                                    <label htmlFor="bikeMiles">miles</label>
+                                </div>
+                            </div>
+                            <div className="row center">
+                                <a className="waves-effect waves-light btn" onClick={this.handleSubmitSpeed}>Finish</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            
+
         )
     }
 }
