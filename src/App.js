@@ -1,8 +1,7 @@
 import React, { useEffect }  from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Login_SignUp from "./pages/LoginPage/LoginPage"
-import HomePage from "./pages/HomePage/HomePage";
-import PickChallenge from "./pages/ChallengePickPage/ChallengePickPage"
+//import { BrowserRouter as Router, Route } from "react-router-dom";
+//import HomePage from "./pages/HomePage/HomePage";
+//import PickChallenge from "./pages/ChallengePickPage/ChallengePickPage"
 import './App.css';
 
 // @TODO is pubsub necessary to show the login modal?

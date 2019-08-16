@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from './node_modules/react';
+import React, { useState, useEffect } from '../../../node_modules/react';
 import "./LoginSignUpModal.css";
-import Modal from './node_modules/react-modal';
+import Modal from '../../../node_modules/react-modal';
 import Auth from '../../utilities/authorizer';
 import Pubsub from '../../utilities/pubsub';
 //import { NOTIF, AUTH_MODAL_TYPES } from '../../utilities/constants';
@@ -19,7 +19,7 @@ function LoginSignUpModal() {
 
     const [modalType, setModalType] = useState(loginType.login);
     const [changeTypeBtnText, setChangeTypeBtnText] = useState(changeTypeBtnTextValues.login);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalIsOpen, setModalIsOpen] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
     
     const [usernameVal, setUsernameVal] = useState('');
@@ -29,8 +29,8 @@ function LoginSignUpModal() {
 
     useEffect(() => {
         Pubsub.subscribe('login', this, closeModal);
-        //Auth.checkForExistingSession();
-        //setModalIsOpen(true);
+        Auth.checkForExistingSession();
+        setModalIsOpen(true);
         return(() => {
             Pubsub.unsubscribe('login', this);
         });

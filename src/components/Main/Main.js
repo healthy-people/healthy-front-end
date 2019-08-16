@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Pubsub from '../../utilities/pubsub';
 import LoginSignUpModal from '../LoginSignUpModal/LoginSignUpModal';
 import Challenge from '../Challenge/Challenge';
+import Auth from '../../utilities/authorizer';
 
 function Main() {
 
