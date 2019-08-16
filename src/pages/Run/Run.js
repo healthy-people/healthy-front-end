@@ -33,7 +33,7 @@ class Run extends React.Component {
             <div>
                 <Navbar />
                 <WhatLength />
-                <div className="container">
+                <div className="container" className="center-align">
                     <div className="row">
                         <h5>Would you like this to be a distance or speed challenge?</h5>
                         <form action="#">
@@ -52,18 +52,20 @@ class Run extends React.Component {
                         </form>
                     </div>
                     <div className="row hide" id="speed">
-                        <h5>How many miles would you like to set for the speed challenge?</h5>
-                        <form action="#">
-                            <div className="row">
-                                <div className='input-field col s3'>
-                                    <input id="runMiles" name="miles" type="number" value={this.state.miles} onChange={this.handleInputChange} />
-                                    <label htmlFor="runMiles">miles</label>
+                        <div className="center-align">
+                            <h5 >How many miles would you like to set for the speed challenge?</h5>
+                            <form action="#" className="center-align">
+                                <div className="row">
+                                    <div className='input-field col s6'>
+                                        <input id="runMiles" name="miles" type="number" value={this.state.miles} onChange={this.handleInputChange} />
+                                        <label htmlFor="runMiles">miles</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row center">
-                                <a className="waves-effect waves-light btn" onClick={this.handleSubmitSpeed}>Finish</a>
-                            </div>
-                        </form>
+                                <div className="row center">
+                                    <a className="waves-effect waves-light btn" onClick={this.handleSubmitSpeed}>Finish</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
