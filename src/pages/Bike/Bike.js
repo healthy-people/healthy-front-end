@@ -3,12 +3,13 @@ import WhatLength from "../../components/WhatLength/WhatLength"
 import "./Bike.css"
 
 class Bike extends React.Component {
+    
     state = {
         miles: ""
     }
 
     showSpeed() {
-        document.getElementById('speed').style.display = 'block'
+        document.getElementById("speed").classList.remove('hide');
     }
 
     handleInputChange = event => {
@@ -18,7 +19,7 @@ class Bike extends React.Component {
         })
     }
 
-    handleSubmitDistance(){
+    handleSubmitDistance() {
         alert("Distance challenge created! Whoever bikes the furthest wins. Good Luck!");
     };
 
@@ -28,43 +29,48 @@ class Bike extends React.Component {
     };
 
     render() {
-        <WhatLength />
-        return <div className="container">
-            <div className="row">
-                <h3>Would you like this to be a distance or speed challenge?</h3>
-                <form action="#">
-                    <p>
-                        <label>
-                            <input name="distance" type="radio" onClick={this.handleSubmitDistance} />
-                            <span>Distance</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input name="speed" type="radio" onClick={this.showSpeed} />
-                            <span>Speed</span>
-                        </label>
-                    </p>
-                </form>
-            </div>
-            <div className="row hide" id="speed">
-                <h3>How many miles would you like to set for the speed challenge?</h3>
-                <form action="#">
-                    <p>
-                        <div className='input-field col s3'>
-                            <input placeholder="#" name="miles" value={this.state.miles} onChange={this.handleInputChange} />
-                            <label for="miles"></label>
-                            {/* <select>
-                                <option value="" disabled selected>Choose your option</option>
-                                <option value="miles">Mile(s)</option>
-                                <option value="kilometers">Kilometers(s)</option>
-                            </select> */}
+        return (
+            <div>
+                <WhatLength/>
+                    <div className="container">
+                        <div className="row">
+                            <h3>Would you like this to be a distance or speed challenge?</h3>
+                            <form action="#">
+                                <p>
+                                    <label>
+                                        <input name="distance" type="radio" onClick={this.handleSubmitDistance} />
+                                        <span>Distance</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="speed" type="radio" onClick={this.showSpeed} />
+                                        <span>Speed</span>
+                                    </label>
+                                </p>
+                            </form>
                         </div>
-                    </p>
-                </form>
-                <a class="waves-effect waves-light btn" onClick={this.handleSubmitSpeed}>Finish</a>
+                        <div className="row hide" id="speed">
+                            <h3>How many miles would you like to set for the speed challenge?</h3>
+                            <form action="#">
+                                <p>
+                                    <div className='input-field col s3'>
+                                        <input placeholder="#" name="miles" value={this.state.miles} onChange={this.handleInputChange} />
+                                        <label for="miles"></label>
+                                        {/* <select>
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="miles">Mile(s)</option>
+                                    <option value="kilometers">Kilometers(s)</option>
+                                </select> */}
+                                    </div>
+                                </p>
+                            </form>
+                            <a class="waves-effect waves-light btn" onClick={this.handleSubmitSpeed}>Finish</a>
+                        </div>
+                    </div>
             </div>
-        </div>
+            
+        )
     }
 }
 

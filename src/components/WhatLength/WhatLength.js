@@ -8,9 +8,7 @@ class WhatLength extends React.Component {
             number: "1",
             length: ""
         };
-        this.handleDay = this.handleDay.bind(this);
-        this.handleWeek = this.handleWeek.bind(this);
-        this.handleMonth = this.handleMonth.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     handleInputChange = event => {
@@ -28,19 +26,19 @@ class WhatLength extends React.Component {
                     <form action="#">
                         <p>
                             <label>
-                                <input name="day" type="radio" onClick={this.handleInputChange} />
+                                <input name="length" value="day" type="radio" onClick={this.handleInputChange} />
                                 <span>1 day</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input name="week" type="radio" onClick={this.handleInputChange} />
+                                <input name="length" value="week" type="radio" onClick={this.handleInputChange} />
                                 <span>1 week</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input name="month" type="radio" onClick={this.handleInputChange} />
+                                <input name="length" value="month" type="radio" onClick={this.handleInputChange} />
                                 <span>1 month</span>
                             </label>
                         </p>
