@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FloatingActionButton from "../FloatingButton/Fab";
 import M from "materialize-css";
+import MessageBoard from "../MessageBoard/MessageBoard";
 
 class ChallengePage extends Component {
     componentDidMount() {
@@ -45,8 +46,9 @@ class ChallengePage extends Component {
                 </div>
                 <div id="messageBoard" className="col s12 center">
                     <h3>Message Board</h3>
+                    <MessageBoard/>
                 </div>
-                <FloatingActionButton />
+                {/* <FloatingActionButton /> */}
             </div>
         );
     }
