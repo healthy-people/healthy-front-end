@@ -1,68 +1,51 @@
 import React from 'react';
+import DatePicker from 'react-date-picker'
 
 class WhatLength extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
-            number: "1",
-            length: ""
+          startDate: new Date(),
+          endDate: new Date()
         };
-        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleStart = this.handleStart.bind(this);
+        this.handleEnd = this.handleEnd.bind(this);
+      }
+
+    handleStart(date) {
+        this.setState({ startDate: date })
+        console.log(this.state.startDate)
     }
 
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        })
+    handleEnd(date) {
+        this.setState({ endDate: date })
     }
-    
+
+    // handleAlert() {
+    // }
+
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <h3>How long do you want this challenge to last?</h3>
-                    <form action="#">
-                        <p>
-                            <label>
-                                <input name="length" value="day" type="radio" onClick={this.handleInputChange} />
-                                <span>1 day</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input name="length" value="week" type="radio" onClick={this.handleInputChange} />
-                                <span>1 week</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input name="length" value="month" type="radio" onClick={this.handleInputChange} />
-                                <span>1 month</span>
-                            </label>
-                        </p>
-                        {/* <div className="row">
-                            <p>
-                                <div className='input-field col s6'>
-                                    <input placeholder="#" id="customNumber" type='number' />
-                                    <label htmlFor="customNumber">Custom length</label>
-                                </div>
-                                <div className="col s6">
-                                    <select>
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="day">Day(s)</option>
-                                        <option value="week">Weeks(s)</option>
-                                        <option value="month">Months(s)</option>
-                                    </select>
-                                </div>
-                            </p>
-                        </div> */}
-                    </form>
+            <div>
+                <h5>What date would you like to start the challenge?</h5>
+                <div className="calendar">
+                    <DatePicker
+                        onChange={this.handleStart}
+                        value={this.state.startDate}
+                    />
+                <h5>What date would you like to start the challenge?</h5>
+                    <DatePicker
+                        onChange={this.handleEnd}
+                        value={this.state.endDate}
+                    />
+                </div>
+                <div>
+                    <a class="waves-effect waves-light btn" onClick={this.handleAlert}>button</a>
                 </div>
             </div>
-        )
+        );
     }
 }
+
 
 export default WhatLength;
