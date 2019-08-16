@@ -8,7 +8,7 @@ class Run extends React.Component {
     }
 
     showSpeed() {
-        document.getElementById('speed').style.display = 'block'
+        document.getElementById("speed").classList.remove('hide');
     }
 
     handleInputChange = event => {

@@ -1,19 +1,22 @@
 import React from 'react';
-import WhatLength from "..WhatLength/WhatLength"
+import WhatLength from "../../components/WhatLength/WhatLength"
 
 class Water extends React.Component {
 
-    waterChallenge() {
+    waterChallenge = () => {
         alert("Water challenge created! Whoever runs the furthest wins. Good Luck!");
     }
 
 
     render() {
-        <WhatLength />
-        return <div>
-            <a class="waves-effect waves-light btn" onClick={this.waterChallenge}>Submit</a>
+        return(
+        <div>
+            <WhatLength/>
+            <div>
+                <a class="waves-effect waves-light btn" onClick={this.waterChallenge}>Submit</a>
+            </div>
         </div>
-
+        )
     }
 }
 
