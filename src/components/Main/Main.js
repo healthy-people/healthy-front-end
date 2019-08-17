@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 //import './main.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Pubsub from '../../utilities/pubsub';
 import LoginSignUpModal from '../LoginSignUpModal/LoginSignUpModal';
 import Challenge from '../Challenge/Challenge';
 import Auth from '../../utilities/authorizer';
+import HomePage from "../../pages/HomePage/HomePage";
 
 function Main() {
 
@@ -15,7 +17,7 @@ function Main() {
     Pubsub.subscribe('login', this, handleSignin);
     Pubsub.subscribe('logout', this, handleSignout);
 
-    return(() => {
+    return (() => {
       Pubsub.unsubscribe('login', this);
       Pubsub.unsubscribe('logout', this);
     });
@@ -36,12 +38,17 @@ function Main() {
   }
 
   return (
-    <div className='container-fluid'>
-      <LoginSignUpModal />
-      <div className='row'>
-        <Challenge selectedChallengeId={selectedChallengeId} />
-      </div>
-    </div>
+    <Router>
+      <>
+        <Route exact path="/homepage" component={HomePage} />
+        <div className='container-fluid'>
+          <LoginSignUpModal />
+          <div className='row'>
+            <Challenge selectedChallengeId={selectedChallengeId} />
+          </div>
+        </div>
+      </>
+    </Router>
   );
 }
 
