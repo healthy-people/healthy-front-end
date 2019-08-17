@@ -7,6 +7,7 @@ import './App.css';
 import Bike from './pages/Bike/Bike';
 import Abstain from './pages/Abstaining/Abstaining';
 import Water from './pages/Water/Water';
+import ChallengePage from './components/ChallengePage/ChallengePage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <div>
         <Route exact path="/" component={Login_SignUp} />
         <Route exact path="/homepage" component={HomePage} />
+        <Route exact path="/challengepage" component={ChallengePage} />
         <Route exact path="/pickrunchallenge" component={Run} />
         <Route exact path="/pickbikechallenge" component={Bike} />
         <Route exact path="/pickabstainchallenge" component={Abstain} />
