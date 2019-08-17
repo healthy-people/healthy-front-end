@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FloatingActionButton from "../FloatingButton/Fab";
 import M from "materialize-css";
 import MessageBoard from "../MessageBoard/MessageBoard";
+import UserData from "../UserData/UserData"
 
 class ChallengePage extends Component {
     componentDidMount() {
@@ -39,7 +40,7 @@ class ChallengePage extends Component {
                 </ul>
 
                 <div id="userData" className="col s12 center">
-                    <h3>User Data</h3>
+                    <UserData />
                 </div>
                 <div id="leaderboard" className="col s12 center">
                     <h3>Leaderboard</h3>
