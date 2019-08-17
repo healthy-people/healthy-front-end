@@ -18,7 +18,6 @@ import ChallengePage from './components/ChallengePage/ChallengePage';
 function App() {
   return (
     <div className="App">
-      <Navbar />
       <Main />
     </div>
   );
