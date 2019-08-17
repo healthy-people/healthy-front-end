@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import "./Navbar.css"
 import M from "materialize-css";
+import Auth from '../../utilities/authorizer';
 
 class Navbar extends Component {
     componentDidMount() {
         M.AutoInit()
     }
-    render() {
+
+    handleSignOut = (event) =>{
+        event.preventDefault();
+        Auth.sendSignoutRequest();
+    }
+
+     render() {
         return (
             <div>
                 <nav>
@@ -26,13 +33,11 @@ class Navbar extends Component {
                         <div className="daysChallengeText col s12"><li>___ Days on Challenge</li></div>
                     </div>
                     <li><a href="#!"><i className="settingsIcon material-icons">settings</i><p>Settings</p></a></li>
-                    <div className="col s12" id="logoutBtn"><li><a className="waves-effect waves-light btn-large " href="#!">Logout</a></li></div>
+                    <div className="col s12" id="logoutBtn"><li><a className="waves-effect waves-light btn-large " onClick={this.handleSignOut}>Logout</a></li></div>
                 </ul>
             </div>
         );
     }
 }
-
-
 
 export default Navbar;
