@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import "./UserData.css"
 
 class UserData extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            logs: []
+        }
+    }
 
     render() {
         return (<div>
@@ -13,7 +19,7 @@ class UserData extends Component {
                 <thead>
                     <tr>
                         <th>Date Logged</th>
-                        <th>Item Name</th>
+                        <th>Distance</th>
                     </tr>
                 </thead>
                 <tbody>

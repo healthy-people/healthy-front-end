@@ -29,6 +29,7 @@ class BikeSpeedLog extends React.Component {
                                 value={this.state.bikePace}
                                 onChange={this.handleInputChange}
                                 type="text"
+                                placeholder="HH:MM:SS"
                             />
                         </div>
                         <div>
