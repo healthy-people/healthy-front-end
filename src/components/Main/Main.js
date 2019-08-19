@@ -30,6 +30,7 @@ function Main() {
 
   const handleSignin = () => {
     setAuthenticated(true);
+    console.log('authenticated');
   }
 
   const handleChallenges = (newChallenge) => {

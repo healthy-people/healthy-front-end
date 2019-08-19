@@ -56,12 +56,12 @@ class WhatLength extends React.Component {
                     minDate={this.state.startDate}
                     dateFormat="MM/dd/yyyy"
                 />
-                {/* <div>
+                <div>
                     <h5>Your start date is now {this.state.startDate} and end date is {this.state.endDate}</h5>
-                </div> */}
-                {/* <div>
+                </div>
+                <div>
                     <a class="waves-effect waves-light btn" onClick={this.handleAlert}>button</a>
-                </div> */}
+                </div>
             </div>
         );
     }

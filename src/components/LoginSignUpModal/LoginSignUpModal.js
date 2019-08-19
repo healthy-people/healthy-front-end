@@ -29,21 +29,28 @@ function LoginSignUpModal() {
 
     useEffect(() => {
         Pubsub.subscribe('login', this, closeModal);
+        Pubsub.subscribe('logout', this, openModal);
+        Pubsub.subscribe('auth_error', this, handleErrorInfo);
         Auth.checkForExistingSession();
-        setModalIsOpen(true);
+        //setModalIsOpen(true);
         return(() => {
             Pubsub.unsubscribe('login', this);
+            Pubsub.unsubscribe('logout', this);
+            Pubsub.unsubscribe('auth_error', this);
         });
     }, []);
 
     const toggleModalType = () => {
-        //if modal type = login, then toggle to signup, if not then login
+        setErrorMessage('');
         let newModalType = modalType === loginType.login ? loginType.signup : loginType.login;
         let newChangeBtnText = modalType === loginType.login ? changeTypeBtnTextValues.signup : changeTypeBtnTextValues.login;
         setModalType(newModalType);
         setChangeTypeBtnText(newChangeBtnText);
     }
 
+    const openModal = () => {
+        setModalIsOpen(true);
+    }
     const closeModal = () => {
         setModalIsOpen(false);
     }
@@ -61,9 +68,13 @@ function LoginSignUpModal() {
     const handleConfirmPasswordChange = (event) => {
         setConfirmPasswordVal(event.target.value);
     }
+    const handleErrorInfo = (errorObj) => {
+        setErrorMessage(errorObj.message);
+    }
 
     const authSubmit = (event) => {
         event.preventDefault();
+        setErrorMessage('');
         if (modalType === loginType.login) {
             let signinObj = {
                 username: usernameVal,
@@ -83,14 +94,12 @@ function LoginSignUpModal() {
             console.log(signupObj);
             Auth.sendSignupRequest(signupObj);
         }
-        //setModalIsOpen(false);
     }
 
     const generateFormContents = () => {
         if (modalType === loginType.login) {
             return (
                 <div className='modal-content'>
-                    <form className="col s12">
                         <div className="row">
                             <div className="input-field col s12">
                                 <input id="loginUsername" type="text" className="validate" value={usernameVal} onChange={handleUsernameChange} />
@@ -103,13 +112,11 @@ function LoginSignUpModal() {
                                 <label htmlFor="loginPassword">Password</label>
                             </div>
                         </div>
-                    </form>
                 </div>
             );
         } else if (modalType === loginType.signup) {
             return (
                 <div className='modal-content'>
-                    <form className="col s12">
                         <div className="row">
                             <div className="input-field col s12">
                                 <input id="signUpEmail" type="email" className="validate" value={emailVal} onChange={handleEmailChange} />
@@ -134,7 +141,6 @@ function LoginSignUpModal() {
                                 <label htmlFor="confirmPassword">Confirm Password</label>
                             </div>
                         </div>
-                    </form>
                 </div>
             );
         } else {
