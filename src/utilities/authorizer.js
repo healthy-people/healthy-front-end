@@ -158,7 +158,6 @@ var user = {};
       // @TODO send an error back to the user
     });
   }
-
 })(Auth);
 
 const validateSigninRequest = (params) => {
