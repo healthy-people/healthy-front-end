@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FloatingActionButton from "../FloatingButton/Fab";
 import M from "materialize-css";
 import MessageBoard from "../MessageBoard/MessageBoard";
+import Leaderboard from "../Leaderboard/Leaderboard";
 import UserData from "../UserData/UserData"
 
 class ChallengePage extends Component {
@@ -12,14 +13,14 @@ class ChallengePage extends Component {
         return (
             <div>
                 <nav className="nav-extended blue-grey">
-                    <div className="nav-wrapper">
+                    {/* <div className="nav-wrapper">
                         <a href="#" className="brand-logo center">HealthMate</a>
                         <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <ul id="nav-mobile" className="right hide-on-med-and-down">
 
                             <li><a href="#!">Settings</a></li>
                         </ul>
-                    </div>
+                    </div> */}
                     <div className="nav-content">
                         <ul className="tabs tabs-transparent">
                             <li className="tab"><a className="active" href="#userData"><i className="large material-icons">poll</i></a></li>
@@ -44,6 +45,7 @@ class ChallengePage extends Component {
                 </div>
                 <div id="leaderboard" className="col s12 center">
                     <h3>Leaderboard</h3>
+                    <Leaderboard/>
                 </div>
                 <div id="messageBoard" className="col s12 center">
                     <h3>Message Board</h3>

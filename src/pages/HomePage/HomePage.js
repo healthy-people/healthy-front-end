@@ -8,7 +8,7 @@ function HomePage() {
     return (
         
             <div>
-                <Navbar />
+                {/* <Navbar /> */}
                 <div className="container">
                     <div className="row" style={{textAlign:"center"}}>
                         <h4>
