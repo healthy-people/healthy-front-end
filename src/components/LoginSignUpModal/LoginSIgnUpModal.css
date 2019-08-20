@@ -1,0 +1,25 @@
+.ReactModal__Overlay {
+    background-repeat: no-repeat;
+    background-image: url("../../images/runnerImage.jpg");
+    animation: shrink 15s infinite alternate;
+    background-size: cover;
+}
+
+@keyframes shrink {
+    0% {
+      background-size: 105% 105%;
+    }
+    100% {
+      background-size: 100% 100%;
+    }
+  }
+
+.ReactModal__Content:focus{
+    opacity: .85;
+    height: 430px;
+}
+
+.ReactModal__Content{
+    opacity: .85;
+    height: 600px;
+}

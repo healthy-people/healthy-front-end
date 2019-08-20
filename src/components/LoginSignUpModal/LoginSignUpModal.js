@@ -21,7 +21,7 @@ function LoginSignUpModal() {
     const [changeTypeBtnText, setChangeTypeBtnText] = useState(changeTypeBtnTextValues.login);
     const [modalIsOpen, setModalIsOpen] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
-    
+
     const [usernameVal, setUsernameVal] = useState('');
     const [emailVal, setEmailVal] = useState('');
     const [passwordVal, setPasswordVal] = useState('');
@@ -33,7 +33,7 @@ function LoginSignUpModal() {
         Pubsub.subscribe('auth_error', this, handleErrorInfo);
         Auth.checkForExistingSession();
         //setModalIsOpen(true);
-        return(() => {
+        return (() => {
             Pubsub.unsubscribe('login', this);
             Pubsub.unsubscribe('logout', this);
             Pubsub.unsubscribe('auth_error', this);
@@ -100,47 +100,47 @@ function LoginSignUpModal() {
         if (modalType === loginType.login) {
             return (
                 <div className='modal-content'>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input id="loginUsername" type="text" className="validate" value={usernameVal} onChange={handleUsernameChange} />
-                                <label htmlFor="loginUsername">Username</label>
-                            </div>
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <input id="loginUsername" type="text" className="validate" value={usernameVal} onChange={handleUsernameChange} />
+                            <label htmlFor="loginUsername">Username</label>
                         </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input id="loginPassword" type="password" className="validate" value={passwordVal} onChange={handlePasswordChange} />
-                                <label htmlFor="loginPassword">Password</label>
-                            </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <input id="loginPassword" type="password" className="validate" value={passwordVal} onChange={handlePasswordChange} />
+                            <label htmlFor="loginPassword">Password</label>
                         </div>
+                    </div>
                 </div>
             );
         } else if (modalType === loginType.signup) {
             return (
                 <div className='modal-content'>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input id="signUpEmail" type="email" className="validate" value={emailVal} onChange={handleEmailChange} />
-                                <label htmlFor="email">Email</label>
-                            </div>
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <input id="signUpEmail" type="email" className="validate" value={emailVal} onChange={handleEmailChange} />
+                            <label htmlFor="email">Email</label>
                         </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input id="signUpUsername" type="text" className="validate" value={usernameVal} onChange={handleUsernameChange} />
-                                <label htmlFor="signUpUsername">Username</label>
-                            </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <input id="signUpUsername" type="text" className="validate" value={usernameVal} onChange={handleUsernameChange} />
+                            <label htmlFor="signUpUsername">Username</label>
                         </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input id="signUpPassword" type="password" className="validate" value={passwordVal} onChange={handlePasswordChange} />
-                                <label htmlFor="signUpPassword">Password</label>
-                            </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <input id="signUpPassword" type="password" className="validate" value={passwordVal} onChange={handlePasswordChange} />
+                            <label htmlFor="signUpPassword">Password</label>
                         </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input id="confirmPassword" type="password" className="validate" value={confirmPasswordVal} onChange={handleConfirmPasswordChange} />
-                                <label htmlFor="confirmPassword">Confirm Password</label>
-                            </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <input id="confirmPassword" type="password" className="validate" value={confirmPasswordVal} onChange={handleConfirmPasswordChange} />
+                            <label htmlFor="confirmPassword">Confirm Password</label>
                         </div>
+                    </div>
                 </div>
             );
         } else {
@@ -150,9 +150,9 @@ function LoginSignUpModal() {
 
     const generateErrorInfo = () => {
         return (
-          <span className='text-danger'>{errorMessage}</span>
+            <span className='text-danger'>{errorMessage}</span>
         );
-      }
+    }
 
     return (
         <Modal
@@ -166,7 +166,9 @@ function LoginSignUpModal() {
             </div>
             <form>
                 {generateFormContents()}
-                <button type='button' className='btn btn-link' onClick={toggleModalType}>{changeTypeBtnText}</button>
+                <div className="row center">
+                    <button type='button' className='btn btn-link' onClick={toggleModalType}>{changeTypeBtnText}</button>
+                </div>
                 <div className='modal-footer row center'>
                     <button className="btn waves-effect waves-light" type="submit" name="action" id="signUpBtn" onClick={authSubmit}>Submit<i className="material-icons right">send</i></button>
                 </div>
