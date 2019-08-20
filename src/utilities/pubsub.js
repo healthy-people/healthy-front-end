@@ -13,6 +13,7 @@ var Pubsub = {};
     for (var subscriber of subs) {
       subscriber.callback(data);
     }
+    console.log('publishers are: ' + JSON.stringify(subs[0]));
   };
 
   obj.subscribe = (notif, subscriber, cb) => {
@@ -24,6 +25,7 @@ var Pubsub = {};
       observer: subscriber,
       callback: cb
     });
+    console.log('subscribers are: ' + JSON.stringify(observers));
   };
 
   obj.unsubscribe = (notif, subscriber) => {

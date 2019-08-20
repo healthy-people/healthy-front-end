@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./Navbar.css"
 import M from "materialize-css";
 import Auth from '../../utilities/authorizer';
+import Pubsub from '../../utilities/pubsub';
 
 class Navbar extends Component {
     componentDidMount() {
@@ -11,6 +12,7 @@ class Navbar extends Component {
     handleSignOut = (event) =>{
         event.preventDefault();
         Auth.sendSignoutRequest();
+        Pubsub.publish('logout', true);
     }
 
      render() {

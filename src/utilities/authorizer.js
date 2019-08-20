@@ -34,25 +34,21 @@ var user = {};
   }
 
   obj.sendSigninRequest = (params) => {
-    // API require email OR alias
-    // forcing email at the moment - may implement more elegant logic later
     console.log(params);
     if (validateSigninRequest(params)) {
       let signinObj = {
         username: params.username,
-        //email: params.email,
         password: params.password
       };
-      console.log(params);
-      console.log('valid signin request');
-      console.log(signinObj);
       // this extra call is not ideal, but we need to hack our way to getting the correct info on signin.  In the future, the API will need to be refactored to send back all the necessary info
+      console.log('pre sign in');
       axios.post('/api/user/login', signinObj).then(response => {
         //DOES NOT CALL console.log(signinObj);
         let session_token = response.headers['x-session-token'];
         localStorage.setItem('x-session-token', session_token);
         axios.get('/api/user', { headers: { 'x-session-token': session_token } }).then(response => {
           user = deepCopyObj(response.data);
+          console.log('attempt at api/user')
           console.log(user);
           Pubsub.publish('login', null);
         }).catch(error => {
