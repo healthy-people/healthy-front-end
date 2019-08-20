@@ -54,7 +54,7 @@ function Main() {
         <Route exact path="/pickwaterchallenge" component={Water} /> */}
         <div className='container-fluid'>
           <LoginSignUpModal />
-          <ChallengeContainer />
+          {/* <ChallengeContainer /> */}
           {/* <div className='row'>
             <Challenge selectedChallengeId={selectedChallengeId} />
           </div> */}
