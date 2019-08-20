@@ -11,6 +11,7 @@ import Bike from '../../pages/Bike/Bike';
 import Abstain from '../../pages/Abstaining/Abstaining';
 import Water from '../../pages/Water/Water';
 import ChallengePage from '../ChallengePage/ChallengePage';
+import ChallengeContainer from '../ChallengeContainer/ChallengeContainer'
 
 function Main() {
 
@@ -45,17 +46,18 @@ function Main() {
   return (
     <Router>
       <>
-        <Route exact path="/homepage" component={HomePage} />
+        {/* <Route exact path="/homepage" component={HomePage} /> */}
         <Route exact path="/challengepage" component={ChallengePage} />
-        <Route exact path="/pickrunchallenge" component={Run} />
+        {/* <Route exact path="/pickrunchallenge" component={Run} />
         <Route exact path="/pickbikechallenge" component={Bike} />
         <Route exact path="/pickabstainchallenge" component={Abstain} />
-        <Route exact path="/pickwaterchallenge" component={Water} />
+        <Route exact path="/pickwaterchallenge" component={Water} /> */}
         <div className='container-fluid'>
           <LoginSignUpModal />
-          <div className='row'>
+          <ChallengeContainer />
+          {/* <div className='row'>
             <Challenge selectedChallengeId={selectedChallengeId} />
-          </div>
+          </div> */}
         </div>
       </>
     </Router>

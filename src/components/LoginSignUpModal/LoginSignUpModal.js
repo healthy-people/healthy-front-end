@@ -29,7 +29,7 @@ function LoginSignUpModal() {
 
     useEffect(() => {
         Pubsub.subscribe('login', this, closeModal);
-        Pubsub.subscribe('logout', this, openModal);
+        //Pubsub.subscribe('logout', this, openModal);
         Pubsub.subscribe('auth_error', this, handleErrorInfo);
         Auth.checkForExistingSession();
         //setModalIsOpen(true);
