@@ -1,7 +1,5 @@
 import axios from 'axios';
 import Pubsub from './pubsub';
-//import { API, NOTIF } from './constants';
-//import { NOTIF } from './constants';
 //import { shallowCopyObj, deepCopyObj } from './helper';
 import { deepCopyObj } from './helper';
 import Data from './data';
@@ -19,6 +17,7 @@ var user = {};
         console.log(response);
         if (validateUserData(response.data)) {
           user = deepCopyObj(response.data);
+          console.log(user);
           console.log('user is validated');
           if (user === {}){
             console.log('no existing session');
@@ -158,7 +157,6 @@ var user = {};
       // @TODO send an error back to the user
     });
   }
-
 })(Auth);
 
 const validateSigninRequest = (params) => {
@@ -202,7 +200,7 @@ const validateUserData = (data) => {
   if (
       //data.alias &&
     //data.created &&
-    data.username 
+    data.id
     //data.email &&
     //params.email_address &&
     //data.first_name &&

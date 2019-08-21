@@ -9,10 +9,8 @@ class FloatingActionButton extends Component {
         M.AutoInit()
     }
 
-
     // constructor(props) {
     //     super(props);
-
     //     this.handleChange = this.handleChange.bind(this);
     //     this.state = { challenge: '' };
     // }

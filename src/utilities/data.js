@@ -1,4 +1,4 @@
-//import axios from 'axios';
+import axios from 'axios';
 //import Pubsub from './pubsub';
 //import Auth, { user } from './auth';
 //import { API, NOTIF } from './constantsS';
@@ -47,14 +47,26 @@ var Data = {};
 //     socket.emit('sendMessage', messageId);
 //   }
 
+// obj.getAllChallenges = () => {
+//       if (user.id) {
+//         axios.get("/api/group_challenge/:user_id").then(response => {
+//           AllChallenges = JSON.parse(JSON.stringify(response.data));
+//           AllChallenges = removeChallengesMemberOf(AllChallenges, user.channels_member_of ? user.channels_member_of : []);
+//           Pubsub.publish('challenges_downloaded', AllChallenges);
+//         }).catch(error => {
+//           console.log(error);
+//         });
+//       }
+//     }
+
 //   obj.getAllChannels = () => {
 //     if (user.user_id) {
 //       axios.get(API.getAllChannels).then(response => {
 //         console.log('get all channels resolved');
 //         console.log(response.data);
-//         AllChannels = JSON.parse(JSON.stringify(response.data));
-//         AllChannels = removeChannelsMemberOf(AllChannels, user.channels_member_of ? user.channels_member_of : []);
-//         Pubsub.publish(NOTIF.GROUPS_DOWNLOADED, AllChannels);
+        // AllChannels = JSON.parse(JSON.stringify(response.data));
+        // AllChannels = removeChannelsMemberOf(AllChannels, user.channels_member_of ? user.channels_member_of : []);
+        // Pubsub.publish(NOTIF.GROUPS_DOWNLOADED, AllChannels);
 //       }).catch(error => {
 //         console.log(error);
 //         // @TODO send helpful error back to user
