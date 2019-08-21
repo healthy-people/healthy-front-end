@@ -33,8 +33,8 @@ function FloatingActionButton(){
         Pubsub.publish('challengeType', 'abstrain');
     }
 
-    const handleChallengeType = () => {
-
+    const handleChallengeType = (challengeType) => {
+        Pubsub.publish('challengeType',challengeType);
     }
 
         return (
@@ -43,7 +43,7 @@ function FloatingActionButton(){
                     <i className="fab large material-icons" tabIndex="1">add</i>
                 </a>
                 <ul>
-                    <li><button className="btn-floating green" type="submit" value="run" onClick={runSubmit}><i className="material-icons">directions_run</i></button></li>
+                    <li><button className="btn-floating green" type="submit" value="run" onClick={() => handleChallengeType('run')}><i className="material-icons">directions_run</i></button></li>
                     <li><button className="btn-floating yellow darken-1" value="bike" onClick={runBike}><i className="material-icons">directions_bike</i></button></li>
                     <li><button className="btn-floating blue" value="water" onClick={runWater}><i className="material-icons">local_drink</i></button></li>
                     <li><button className="btn-floating red" value="abstain" onClick={runAbstain}><i className="material-icons">smoke_free</i></button></li>

@@ -40,8 +40,8 @@ function Main() {
     console.log('authenticated');
   }
 
-  const handleChallengeType = () => {
-    console.log();
+  const handleChallengeType = (challenge) => {
+    console.log(challenge);
   }
 
   return (
