@@ -20,8 +20,13 @@ function ChallengeContainer() {
     }, []);
 
     const handleLogin = () => {
-        setChallengeList(user.challenges_member_of);
+        //this needs to set the state equal to the challenges such as user.challenges_member_of
+        setChallengeList([]);
         setChallengeListFetched(true);
+    }
+
+    const creatChallenges = () => {
+
     }
 
     const handleLogout = () => {
@@ -47,7 +52,7 @@ function ChallengeContainer() {
                 });
                 return (items);
             } else {
-                return "You're not part of any challenge yet";
+                return "You're not part of any challenges yet";
             }
         }
     }

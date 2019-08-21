@@ -17,6 +17,7 @@ var user = {};
         console.log(response);
         if (validateUserData(response.data)) {
           user = deepCopyObj(response.data);
+          console.log(user);
           console.log('user is validated');
           if (user === {}){
             console.log('no existing session');
@@ -199,7 +200,7 @@ const validateUserData = (data) => {
   if (
       //data.alias &&
     //data.created &&
-    data.username 
+    data.id
     //data.email &&
     //params.email_address &&
     //data.first_name &&
