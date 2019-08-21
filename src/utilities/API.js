@@ -2,7 +2,11 @@ import axios from "axios";
 
 export default {
 
-    getUsersChallenges: (user_id) => axios.get("/api/message/"+user_id),
+    getUsersChallenges: (user_id) => axios.get("/api/group_challenge/"+user_id).then(response => {
+        console.log(JSON.parse(JSON.stringify(response.data)));
+    }).catch(error => {
+        console.log(error)
+    }),
     createNewChallenge: (data) => axios.post("/api/group_challenge/create", data),
     addChallengeMember : (data) => axios.post("/api/challenge_member/create", data),
     deleteChallengeMember: (data) => axios.delete("/api/challenge_member/delete", data),
@@ -16,4 +20,3 @@ export default {
     sendMessage: (data) => axios.post("/api/messages/create", data)
 
 }
-
