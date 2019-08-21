@@ -37,6 +37,8 @@ class WhatLength extends React.Component {
     render() {
         return (
             <div className="center-align">
+{/* We need to run something like .toLocaleDateString() on startDate and endDate are Date Objects before rendering */}
+
                 {/* <h5>What date would you like to start the challenge?</h5>
                 <DatePicker
                     selected={this.state.startDate}

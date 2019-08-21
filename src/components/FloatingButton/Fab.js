@@ -22,7 +22,6 @@ function FloatingActionButton() {
 
     const handleSignin = () => {
         setAuthenticated(true);
-        console.log('authenitnorinogengoingfd')
     }
 
     const handleChallengeType = (challengeType) => {
