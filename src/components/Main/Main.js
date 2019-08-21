@@ -17,7 +17,7 @@ import FAB from '../FloatingButton/Fab';
 function Main() {
 
   const [authenticated, setAuthenticated] = useState(false);
-  const [selectedChallengeId, setSelectedChallengeId] = useState('');
+  const [challengeType, setChallengeType] = useState('');
 
   useEffect(() => {
     Pubsub.subscribe('login', this, handleSignin);
@@ -37,32 +37,30 @@ function Main() {
 
   const handleSignin = () => {
     setAuthenticated(true);
-    console.log('authenticated');
   }
 
   const handleChallengeType = (challenge) => {
+    setChallengeType(challenge);
     console.log(challenge);
   }
 
+  function pageDirector() {
+    if(authenticated){
+      if(challengeType === 'run'){
+        return (<Run />);
+      } else if (challengeType === 'bike'){
+        return (<Bike />);
+      }
+    }
+  }
+
   return (
-    <Router>
-      <>
-        {/* <Route exact path="/homepage" component={HomePage} /> */}
-        {/* <Route exact path="/challengepage" component={ChallengePage} /> */}
-        {/* <Route exact path="/pickrunchallenge" component={Run} />
-        <Route exact path="/pickbikechallenge" component={Bike} />
-        <Route exact path="/pickabstainchallenge" component={Abstain} />
-        <Route exact path="/pickwaterchallenge" component={Water} /> */}
-        <div className='container-fluid'>
-          <LoginSignUpModal />
-          <FAB />
-          <ChallengeContainer />
-          {/* <div className='row'>
-            <Challenge selectedChallengeId={selectedChallengeId} />
-          </div> */}
-        </div>
-      </>
-    </Router>
+      <div className='container-fluid'>
+        <LoginSignUpModal />
+        <FAB />
+        {pageDirector()}
+        <ChallengeContainer />
+      </div>
   );
 }
 
