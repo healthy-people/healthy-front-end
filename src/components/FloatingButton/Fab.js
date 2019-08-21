@@ -3,10 +3,41 @@ import Pubsub from '../../utilities/pubsub';
 import "./Fab.css"
 import M from "materialize-css";
 
-function FloatingActionButton(){
+function FloatingActionButton() {
+
+    const [authenticated, setAuthenticated] = useState(false);
+
+    useEffect(() => {
+        Pubsub.subscribe('login', this, handleSignin);
+        Pubsub.subscribe('logout', this, handleSignout);
+        return (() => {
+            Pubsub.unsubscribe('login', this);
+            Pubsub.unsubscribe('logout', this);
+        });
+    }, []);
+
+    const handleSignout = () => {
+        setAuthenticated(false);
+    }
+
+    const handleSignin = () => {
+        setAuthenticated(true);
+        console.log('authenitnorinogengoingfd')
+    }
 
     const handleChallengeType = (challengeType) => {
-        Pubsub.publish('challengeType',challengeType);
+        Pubsub.publish('challengeType', challengeType);
+    }
+
+    function renderFAB() {
+        if (!authenticated) {
+            return console.log('FAB do not display if not authenticated');
+        } else {
+            return (
+                <div>
+                </div>
+            )
+        }
     }
 
     return (
