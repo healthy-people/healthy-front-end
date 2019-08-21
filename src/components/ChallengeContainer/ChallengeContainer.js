@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Auth, { user } from '../../utilities/authorizer';
 import Pubsub from '../../utilities/pubsub';
 import Challenge from '../Challenge/Challenge';
+import API from '../../utilities/API'
 
 function ChallengeContainer() {
 
@@ -21,12 +22,15 @@ function ChallengeContainer() {
 
     const handleLogin = () => {
         //this needs to set the state equal to the challenges such as user.challenges_member_of
-        setChallengeList([]);
+        setChallengeList(createChallenges);
         setChallengeListFetched(true);
     }
 
-    const creatChallenges = () => {
-
+    const createChallenges = () => {
+        var challenges = API.getUsersChallenges(user.id);
+        setChallengeList(challenges);
+        console.log('challenges are: ')
+        console.log(challenges);
     }
 
     const handleLogout = () => {
@@ -39,6 +43,7 @@ function ChallengeContainer() {
     }
 
     const generateChallengeListItems = () => {
+        console.log(challengeList);
         if (!challengeListFetched) {
             return null;
           } else {
@@ -47,7 +52,7 @@ function ChallengeContainer() {
             } else if (challengeList.length) {
                 const items = challengeList.map(item => {
                     return (
-                        <Challenge/>
+                        item
                     );
                 });
                 return (items);
