@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Auth, { user } from '../../utilities/authorizer';
 import Pubsub from '../../utilities/pubsub';
 import Challenge from '../Challenge/Challenge';
-import API from '../../utilities/API'
+import API from '../../utilities/API';
+import FAB from '../FloatingButton/Fab';
 
 function ChallengeContainer() {
 
@@ -22,37 +23,38 @@ function ChallengeContainer() {
 
     const handleLogin = () => {
         //this needs to set the state equal to the challenges such as user.challenges_member_of
-        setChallengeList(createChallenges);
-        setChallengeListFetched(true);
+        //setChallengeList(createChallenges);
+        setChallengeListFetched(false);
     }
 
     const createChallenges = () => {
-        var challenges = API.getUsersChallenges(user.id);
-        setChallengeList(challenges);
+        //var challenges = API.getUsersChallenges(user.id);
+        //setChallengeList(challenges);
         //console.log('challenges are: ')
         //console.log(challenges);
     }
 
     const handleLogout = () => {
-        setChallengeList([]);
+        //setChallengeList([]);
         setChallengeListFetched(false);
     }
 
     const handleNewChallengeJoined = () => {
-        Auth.checkForExistingSession();
+        //Auth.checkForExistingSession();
     }
 
     const generateChallengeListItems = () => {
         //console.log(challengeList);
         if (!challengeListFetched) {
-            return null;
+            //return null
+            return 'No challenges collected yet';
           } else {
             if (challengeList.length && challengeList[0].challenge_id === null) {
               return null;
             } else if (challengeList.length) {
                 const items = challengeList.map(item => {
                     return (
-                        item
+                      item
                     );
                 });
                 return (items);
@@ -63,7 +65,9 @@ function ChallengeContainer() {
     }
 
     return (
-        <div>{generateChallengeListItems()}</div>
+        <div>
+            {generateChallengeListItems()}
+        </div>
     )
 }
 

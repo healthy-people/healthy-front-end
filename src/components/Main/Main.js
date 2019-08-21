@@ -36,36 +36,38 @@ function Main() {
 
   const handleSignin = () => {
     setAuthenticated(true);
-    console.log('authenticated');
   }
 
   const handleChallengeType = (challenge) => {
     setChallengeType(challenge);
-    console.log(challenge);
+    console.log('challenge type is: ' + challenge);
   }
 
   function pageDirector() {
-    if(authenticated){
-      if(challengeType == 'run'){
-        return <Run />;
-      } else if (challengeType == 'bike'){
-        return <Bike />;
-      } else if (challengeType == 'water'){
-        return <Water />;
-      } else if (challengeType == 'abstain'){
-        return <Abstain />;
-      } else if (challengeType == ''){
-        return <ChallengeContainer />;
+    if (!authenticated) {
+      return null;
+    } else {
+      switch (challengeType){
+        case ('run'):
+            return <Run />;
+        case ('bike'):
+            return <Bike />;
+        case ('water'):
+            return <Water />;
+        case ('abstain'):
+            return <Abstain />;
+        default:
+            return <ChallengeContainer />;
       }
     }
   }
 
   return (
-      <div>
-        <LoginSignUpModal />
-        <FAB />
-        {pageDirector()}
-      </div>
+    <div>
+      <LoginSignUpModal />
+      <FAB />
+      {pageDirector()}
+    </div>
   );
 }
 
