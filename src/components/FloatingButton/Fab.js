@@ -1,43 +1,38 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from '../../../node_modules/react';
+import Pubsub from '../../utilities/pubsub';
 import "./Fab.css"
 import M from "materialize-css";
 // import PickChallenge from "../../pages/ChallengePickPage/ChallengePickPage"
 
+function FloatingActionButton(){
 
-class FloatingActionButton extends Component {
-    componentDidMount() {
-        M.AutoInit()
+    const [challengeType, setChallengeType] = useState('');
+
+    useEffect(() => {
+        Pubsub.subscribe('challengeType', this, handleChallengeType);
+    }, []);
+
+    const runSubmit = (event) => {
+        event.preventDefault();
+        console.log('run');
     }
 
-    // constructor(props) {
-    //     super(props);
-    //     this.handleChange = this.handleChange.bind(this);
-    //     this.state = { challenge: '' };
-    // }
-    // handleChange = (event) => {
-    //     const challenge = event.target.value;
-    //     this.props.onSelect(challenge)
-    // }
+    const handleChallengeType = () => {
+    }
 
-    render() {
         return (
             <div className="fixed-action-btn">
                 <a className="btn-floating btn-large red">
                     <i className="fab large material-icons" tabIndex="1">add</i>
                 </a>
                 <ul>
-                    <li><a className="btn-floating green" value="run" href="/pickrunchallenge"><i className="material-icons">directions_run</i></a></li>
-                    <li><a className="btn-floating yellow darken-1" value="bike" href="/pickbikechallenge"><i className="material-icons">directions_bike</i></a></li>
-                    <li><a className="btn-floating blue" value="water" href="/pickwaterchallenge"><i className="material-icons">local_drink</i></a></li>
-                    <li><a className="btn-floating red" value="abstain" href="/pickabstainchallenge"><i className="material-icons">smoke_free</i></a></li>
+                    <li><button className="btn-floating green" type="submit" value="run" onClick={runSubmit}><i className="material-icons">directions_run</i></button></li>
+                    <li><button className="btn-floating yellow darken-1" value="bike" ><i className="material-icons">directions_bike</i></button></li>
+                    <li><button className="btn-floating blue" value="water" ><i className="material-icons">local_drink</i></button></li>
+                    <li><button className="btn-floating red" value="abstain" ><i className="material-icons">smoke_free</i></button></li>
                 </ul>
             </div>
         );
-    }
-
 }
-
-
-
 
 export default FloatingActionButton;
