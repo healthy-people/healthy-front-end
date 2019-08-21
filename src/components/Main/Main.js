@@ -22,10 +22,11 @@ function Main() {
   useEffect(() => {
     Pubsub.subscribe('login', this, handleSignin);
     Pubsub.subscribe('logout', this, handleSignout);
-
+    Pubsub.subscribe('challengeType', this, handleChallengeType);
     return (() => {
       Pubsub.unsubscribe('login', this);
       Pubsub.unsubscribe('logout', this);
+      Pubsub.unsubscribe('challengeType', this);
     });
   }, []);
 
@@ -39,9 +40,8 @@ function Main() {
     console.log('authenticated');
   }
 
-  const handleChallenges = (newChallenge) => {
-    console.log(newChallenge);
-    //setSelectedChapllengeId(newChallenge);
+  const handleChallengeType = () => {
+    console.log();
   }
 
   return (

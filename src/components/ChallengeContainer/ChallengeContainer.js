@@ -29,8 +29,8 @@ function ChallengeContainer() {
     const createChallenges = () => {
         var challenges = API.getUsersChallenges(user.id);
         setChallengeList(challenges);
-        console.log('challenges are: ')
-        console.log(challenges);
+        //console.log('challenges are: ')
+        //console.log(challenges);
     }
 
     const handleLogout = () => {
@@ -43,7 +43,7 @@ function ChallengeContainer() {
     }
 
     const generateChallengeListItems = () => {
-        console.log(challengeList);
+        //console.log(challengeList);
         if (!challengeListFetched) {
             return null;
           } else {

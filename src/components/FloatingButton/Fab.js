@@ -9,15 +9,32 @@ function FloatingActionButton(){
     const [challengeType, setChallengeType] = useState('');
 
     useEffect(() => {
-        Pubsub.subscribe('challengeType', this, handleChallengeType);
+        //Pubsub.subscribe('challengeType', this, handleChallengeType);
     }, []);
 
     const runSubmit = (event) => {
         event.preventDefault();
-        console.log('run');
+        setChallengeType('run');
+        Pubsub.publish('challengeType', 'run');
+    }
+    const runBike = (event) => {
+        event.preventDefault();
+        setChallengeType('bike');
+        Pubsub.publish('challengeType', 'bike');
+    }
+    const runWater = (event) => {
+        event.preventDefault();
+        setChallengeType('water');
+        Pubsub.publish('challengeType', 'water');
+    }
+    const runAbstain = (event) => {
+        event.preventDefault();
+        setChallengeType('abstain');
+        Pubsub.publish('challengeType', 'abstrain');
     }
 
     const handleChallengeType = () => {
+
     }
 
         return (
@@ -27,9 +44,9 @@ function FloatingActionButton(){
                 </a>
                 <ul>
                     <li><button className="btn-floating green" type="submit" value="run" onClick={runSubmit}><i className="material-icons">directions_run</i></button></li>
-                    <li><button className="btn-floating yellow darken-1" value="bike" ><i className="material-icons">directions_bike</i></button></li>
-                    <li><button className="btn-floating blue" value="water" ><i className="material-icons">local_drink</i></button></li>
-                    <li><button className="btn-floating red" value="abstain" ><i className="material-icons">smoke_free</i></button></li>
+                    <li><button className="btn-floating yellow darken-1" value="bike" onClick={runBike}><i className="material-icons">directions_bike</i></button></li>
+                    <li><button className="btn-floating blue" value="water" onClick={runWater}><i className="material-icons">local_drink</i></button></li>
+                    <li><button className="btn-floating red" value="abstain" onClick={runAbstain}><i className="material-icons">smoke_free</i></button></li>
                 </ul>
             </div>
         );

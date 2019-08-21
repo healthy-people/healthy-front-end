@@ -98,7 +98,7 @@ var user = {};
           localStorage.setItem('x-session-token', session_token);
           axios.get('/api/user/', { headers: { 'x-session-token': session_token } }).then(getResponse => {
             user = deepCopyObj(getResponse.data);
-            console.log('post ot login:')
+            console.log('post to login:')
             console.log(user);
             Pubsub.publish('login', null);
           }).catch(error => {
