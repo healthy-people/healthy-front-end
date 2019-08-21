@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+//import { BrowserRouter as Router, Route } from "react-router-dom";
 import Run from "./pages/Run/Run";
 import './App.css';
 import Bike from './pages/Bike/Bike';

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from '../../../node_modules/react';
-//import "./LoginSignUpModal.css";
 import Modal from '../../../node_modules/react-modal';
 import Auth from '../../utilities/authorizer';
 import Pubsub from '../../utilities/pubsub';
-//import { NOTIF, AUTH_MODAL_TYPES } from '../../utilities/constants';
 
 const changeTypeBtnTextValues = {
     login: 'Don\'t have an account?',
@@ -32,7 +30,6 @@ function LoginSignUpModal() {
         Pubsub.subscribe('logout', this, openModal);
         Pubsub.subscribe('auth_error', this, handleErrorInfo);
         Auth.checkForExistingSession();
-        //setModalIsOpen(true);
         return (() => {
             Pubsub.unsubscribe('login', this);
             Pubsub.unsubscribe('logout', this);

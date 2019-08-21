@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 //import './main.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+//import { BrowserRouter as Router, Route } from "react-router-dom";
 import Run from "../../pages/Run/Run";
 import Pubsub from '../../utilities/pubsub';
 import LoginSignUpModal from '../LoginSignUpModal/LoginSignUpModal';
@@ -32,11 +32,11 @@ function Main() {
 
   const handleSignout = () => {
     setAuthenticated(false);
-    //setSelectedGroupId('');
   }
 
   const handleSignin = () => {
     setAuthenticated(true);
+    console.log('authenticated');
   }
 
   const handleChallengeType = (challenge) => {
@@ -46,20 +46,25 @@ function Main() {
 
   function pageDirector() {
     if(authenticated){
-      if(challengeType === 'run'){
-        return (<Run />);
-      } else if (challengeType === 'bike'){
-        return (<Bike />);
+      if(challengeType == 'run'){
+        return <Run />;
+      } else if (challengeType == 'bike'){
+        return <Bike />;
+      } else if (challengeType == 'water'){
+        return <Water />;
+      } else if (challengeType == 'abstain'){
+        return <Abstain />;
+      } else if (challengeType == ''){
+        return <ChallengeContainer />;
       }
     }
   }
 
   return (
-      <div className='container-fluid'>
+      <div>
         <LoginSignUpModal />
         <FAB />
         {pageDirector()}
-        <ChallengeContainer />
       </div>
   );
 }
