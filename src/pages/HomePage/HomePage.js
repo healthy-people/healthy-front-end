@@ -5,6 +5,7 @@ import ChallengePage from "../../components/ChallengePage/ChallengePage"
 
 
 function HomePage() {
+
     return (
         
             <div>
