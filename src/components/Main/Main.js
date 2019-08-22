@@ -49,7 +49,11 @@ function Main() {
     } else {
       switch (challengeType){
         case ('run'):
-            return <Run />;
+            return (
+            <div>
+              <FAB />
+              <Run />
+              </div> );
         case ('bike'):
             return <Bike />;
         case ('water'):
