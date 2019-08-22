@@ -2,11 +2,12 @@ import axios from "axios";
 
 export default {
 
-    getUsersChallenges: (user_id) => axios.get("/api/group_challenge/"+user_id).then(response => {
-        console.log(JSON.parse(JSON.stringify(response.data)));
-    }).catch(error => {
-        console.log(error)
-    }),
+    getUsersChallenges: (user_id) => axios.get("/api/group_challenge/"+user_id),
+    // .then(response => {
+    //     return (JSON.parse(JSON.stringify(response.data)));
+    // }).catch(error => {
+    //     return (error)
+    // }),
     createNewChallenge: (data) => axios.post("/api/group_challenge/create", data),
     addChallengeMember : (data) => axios.post("/api/challenge_member/create", data),
     deleteChallengeMember: (data) => axios.delete("/api/challenge_member/delete", data),

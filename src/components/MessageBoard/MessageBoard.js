@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MessageItem from "../MessageItem/MessageItem"
 import "./MessageBoard.css"
+import API from '../../utilities/API';
 
 class MessageBoard extends Component {
     state = {

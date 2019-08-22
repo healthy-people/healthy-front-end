@@ -61,7 +61,6 @@ function Main() {
   }
 
   return (
-    
     <div>
       <LoginSignUpModal />
       <FAB />

@@ -8,6 +8,7 @@ import GenerateChallenges from '../../utilities/generateChallenges';
 
 function ChallengeContainer() {
 
+    const [authenticated, setAuthenticated] = useState(false);
     const [challengeListFetched, setChallengeListFetched] = useState(false);
     const [challengeList, setChallengeList] = useState([]);
 
@@ -23,15 +24,28 @@ function ChallengeContainer() {
     }, []);
 
     const handleLogin = () => {
+        setAuthenticated(true);
+        console.log('challenge container login');
         //this needs to set the state equal to the challenges such as user.challenges_member_of
-        setChallengeList(user.challenges);
+        //setChallengeList(user.challenges);
         setChallengeListFetched(true);
-        //createChallenges();
+        createChallenges();
     }
 
+    var challenges = {}
+
     const createChallenges = () => {
-        var challenges = API.getUsersChallenges(user.id);
-        setChallengeList(challenges);
+        //var challenges = API.getUsersChallenges(user.id);
+        console.log('create challenges called');
+        API.getUsersChallenges(user.id).then(response => {
+            challenges = (JSON.parse(JSON.stringify(response.data)));
+            console.log(challenges);
+            setChallengeListFetched(true);
+            challengeList = challenges
+            console.log(challengeList);
+        }).catch(error => {
+            challenges = (error);
+        });
         //console.log('challenges are: ')
         //console.log(challenges);
     }
@@ -47,7 +61,16 @@ function ChallengeContainer() {
 
     const generateChallengeListItems = () => {
         //console.log(challengeList);
-        if (!challengeListFetched) {
+        // return (
+        //     <div>
+        //         <h5>Challenges are</h5>
+        //         {challenges[0]}
+        //     </div>
+        // )
+
+
+
+        if (challengeListFetched) {
             //return null
             return 'No challenges collected yet';
           } else {
@@ -56,9 +79,10 @@ function ChallengeContainer() {
             } else if (challengeList.length) {
                 const items = challengeList.map(item => {
                     return (
-                        <Challenge
-                            name={item.challenge_name}
-                        />
+                        item
+                        // <Challenge
+                        //     name={item.challenge_name}
+                        // />
                     );
                 });
                 return (items);
