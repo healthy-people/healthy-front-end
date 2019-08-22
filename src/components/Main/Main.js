@@ -43,17 +43,13 @@ function Main() {
     console.log('challenge type is: ' + challenge);
   }
 
-  function pageDirector() {
+  const pageDirector = () => {
     if (!authenticated) {
       return null;
     } else {
       switch (challengeType){
         case ('run'):
-            return (
-            <div>
-              <FAB />
-              <Run />
-              </div> );
+            return <Run />;
         case ('bike'):
             return <Bike />;
         case ('water'):
@@ -61,7 +57,7 @@ function Main() {
         case ('abstain'):
             return <Abstain />;
         default:
-            return <ChallengeContainer />;
+            return <ChallengeContainer />
       }
     }
   }
