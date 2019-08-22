@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-function Challenge(){
+//this creates format.style for each challenge
+function Challenge(props){
     return (
-        <span></span>
+        <span>{props.challenge_name}</span>
       );
 }
 

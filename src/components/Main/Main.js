@@ -38,15 +38,13 @@ function Main() {
     setAuthenticated(true);
   }
 
-  const handleChallengeType = (challenge) => {
-    setChallengeType(challenge);
-    console.log('challenge type is: ' + challenge);
+  const handleChallengeType = (challengeType) => {
+    setChallengeType(challengeType);
+    console.log('challenge type is: ' + challengeType);
   }
 
   const pageDirector = () => {
-    if (!authenticated) {
-      return null;
-    } else {
+    if (authenticated) {
       switch (challengeType){
         case ('run'):
             return <Run />;
@@ -63,6 +61,7 @@ function Main() {
   }
 
   return (
+    
     <div>
       <LoginSignUpModal />
       <FAB />

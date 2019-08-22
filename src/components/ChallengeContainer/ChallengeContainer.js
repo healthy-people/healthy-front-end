@@ -4,6 +4,7 @@ import Pubsub from '../../utilities/pubsub';
 import Challenge from '../Challenge/Challenge';
 import API from '../../utilities/API';
 import FAB from '../FloatingButton/Fab';
+import GenerateChallenges from '../../utilities/generateChallenges';
 
 function ChallengeContainer() {
 
@@ -13,29 +14,30 @@ function ChallengeContainer() {
     useEffect(() => {
         Pubsub.subscribe('login', this, handleLogin);
         Pubsub.subscribe('logout', this, handleLogout);
-        Pubsub.subscribe('challenge_joined',this,handleNewChallengeJoined);
+        //Pubsub.subscribe('challenge_joined',this,handleNewChallengeJoined);
         return (() => {
             Pubsub.unsubscribe('login', this);
             Pubsub.unsubscribe('logout', this);
-            Pubsub.unsubscribe('challenge_joined',this);
+            //Pubsub.unsubscribe('challenge_joined',this);
         });
     }, []);
 
     const handleLogin = () => {
         //this needs to set the state equal to the challenges such as user.challenges_member_of
-        //setChallengeList(createChallenges);
-        setChallengeListFetched(false);
+        setChallengeList(user.challenges);
+        setChallengeListFetched(true);
+        //createChallenges();
     }
 
     const createChallenges = () => {
-        //var challenges = API.getUsersChallenges(user.id);
-        //setChallengeList(challenges);
+        var challenges = API.getUsersChallenges(user.id);
+        setChallengeList(challenges);
         //console.log('challenges are: ')
         //console.log(challenges);
     }
 
     const handleLogout = () => {
-        //setChallengeList([]);
+        setChallengeList([]);
         setChallengeListFetched(false);
     }
 
@@ -54,7 +56,9 @@ function ChallengeContainer() {
             } else if (challengeList.length) {
                 const items = challengeList.map(item => {
                     return (
-                      item
+                        <Challenge
+                            name={item.challenge_name}
+                        />
                     );
                 });
                 return (items);
