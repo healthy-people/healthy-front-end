@@ -32,11 +32,11 @@ function FloatingActionButton() {
     }
 
     const renderFAB = () => {
-        if(!authenticated) {
-            return null
-        } else 
+        // if(!authenticated) {
+        //     return null
+        // } else 
         if (challengeType === ('') ){
-            console.log('challenge type is correct');
+            // console.log('challenge type is correct');
             return (
             <div className="fixed-action-btn">
                 <div className="btn-floating btn-large red">

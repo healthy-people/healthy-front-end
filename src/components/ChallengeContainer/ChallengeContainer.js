@@ -4,7 +4,7 @@ import Pubsub from '../../utilities/pubsub';
 import Challenge from '../Challenge/Challenge';
 import API from '../../utilities/API';
 import FAB from '../FloatingButton/Fab';
-import GenerateChallenges from '../../utilities/generateChallenges';
+// import GenerateChallenges from '../../utilities/generateChallenges';
 
 function ChallengeContainer() {
 
