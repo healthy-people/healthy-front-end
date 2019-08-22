@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from "../../components/Navbar/Navbar";
-import FloatingActionButton from "../../components/FloatingButton/Fab"
+import FloatingActionButton from "../../components/FloatingButton/FabOLD"
 import ChallengePage from "../../components/ChallengePage/ChallengePage"
 
 

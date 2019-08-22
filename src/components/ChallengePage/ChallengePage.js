@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FloatingActionButton from "../FloatingButton/Fab";
+import FloatingActionButton from "../FloatingButton/FabOLD";
 import M from "materialize-css";
 import MessageBoard from "../MessageBoard/MessageBoard";
 import Leaderboard from "../Leaderboard/Leaderboard";

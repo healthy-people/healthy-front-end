@@ -31,7 +31,6 @@ class Run extends React.Component {
     render() {
         return (
             <div>
-                <Navbar />
                 <WhatLength />
                 <div className="container" className="center-align">
                     <div className="row">

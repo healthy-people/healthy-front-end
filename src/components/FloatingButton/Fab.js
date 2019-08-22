@@ -1,43 +1,63 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from '../../../node_modules/react';
+import Pubsub from '../../utilities/pubsub';
 import "./Fab.css"
 import M from "materialize-css";
-// import PickChallenge from "../../pages/ChallengePickPage/ChallengePickPage"
+import Auth, { user } from '../../utilities/authorizer';
 
+function FloatingActionButton() {
 
-class FloatingActionButton extends Component {
-    componentDidMount() {
-        M.AutoInit()
+    const [authenticated, setAuthenticated] = useState(false);
+    const [challengeType, setChallengeType] = useState('');
+
+    useEffect(() => {
+        Pubsub.subscribe('login', this, handleSignin);
+        Pubsub.subscribe('logout', this, handleSignout);
+        return (() => {
+          Pubsub.unsubscribe('login', this);
+          Pubsub.unsubscribe('logout', this);
+        });
+    }, []);
+
+    const handleSignout = () => {
+        setAuthenticated(false);
     }
 
-    // constructor(props) {
-    //     super(props);
-    //     this.handleChange = this.handleChange.bind(this);
-    //     this.state = { challenge: '' };
-    // }
-    // handleChange = (event) => {
-    //     const challenge = event.target.value;
-    //     this.props.onSelect(challenge)
-    // }
+    const handleSignin = () => {
+        setAuthenticated(true);
+    }
 
-    render() {
-        return (
+    const handleChallengeType = (challengeType) => {
+        setChallengeType(challengeType);
+        Pubsub.publish('challengeType', challengeType);
+    }
+
+    const renderFAB = () => {
+        if(!authenticated) {
+            return null
+        } else 
+        if (challengeType === ('') ){
+            console.log('challenge type is correct');
+            return (
             <div className="fixed-action-btn">
-                <a className="btn-floating btn-large red">
+                <div className="btn-floating btn-large red">
                     <i className="fab large material-icons" tabIndex="1">add</i>
-                </a>
+                </div>
                 <ul>
-                    <li><a className="btn-floating green" value="run" href="/pickrunchallenge"><i className="material-icons">directions_run</i></a></li>
-                    <li><a className="btn-floating yellow darken-1" value="bike" href="/pickbikechallenge"><i className="material-icons">directions_bike</i></a></li>
-                    <li><a className="btn-floating blue" value="water" href="/pickwaterchallenge"><i className="material-icons">local_drink</i></a></li>
-                    <li><a className="btn-floating red" value="abstain" href="/pickabstainchallenge"><i className="material-icons">smoke_free</i></a></li>
+                    <li><button className="btn-floating green" value="run" onClick={() => handleChallengeType('run')}><i className="material-icons">directions_run</i></button></li>
+                    <li><button className="btn-floating yellow darken-1" value="bike" onClick={() => handleChallengeType('bike')}><i className="material-icons">directions_bike</i></button></li>
+                    <li><button className="btn-floating blue" value="water" onClick={() => handleChallengeType('water')}><i className="material-icons">local_drink</i></button></li>
+                    <li><button className="btn-floating red" value="abstain" onClick={() => handleChallengeType('abstain')}><i className="material-icons">smoke_free</i></button></li>
                 </ul>
             </div>
-        );
+            )
+        }
     }
 
+    return (
+        <div>
+            {renderFAB()}
+        </div>
+    );
 }
-
-
-
 
 export default FloatingActionButton;
