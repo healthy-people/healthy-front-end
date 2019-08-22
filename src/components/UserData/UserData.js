@@ -18,15 +18,15 @@ class UserData extends Component {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>08/10/19</td>
+                        <td></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>07/28/19</td>
+                        <td></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>07/30/19</td>
+                        <td></td>
                         <td></td>
                     </tr>
                 </tbody>
