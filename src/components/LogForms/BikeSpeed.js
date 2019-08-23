@@ -47,7 +47,7 @@ class BikeSpeedLog extends React.Component {
         });
         let { user_id, group_challenge_id, biking_pace } = this.state;
         let newBikingLog = {
-            user_id: user_id,
+            user_id: this.props.user_id,
             group_challenge_id: group_challenge_id,
             biking_pace: biking_pace
         }

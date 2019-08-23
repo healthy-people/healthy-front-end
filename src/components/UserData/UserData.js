@@ -13,39 +13,26 @@ class UserData extends Component {
         challengeType: "RunDist"
     }
 
+    // user_id={this.props.user_id}
     renderPage = () => {
         if (this.state.challengeType === "RunDist") {
-            return <RunDistanceLog />;
+            return <RunDistanceLog user_id={this.props.user_id}/>;
         } else if (this.state.challengeType === "RunSpeed") {
-            return <RunSpeedLog />;
+            return <RunSpeedLog user_id={this.props.user_id} />;
         } else if (this.state.challengeType === "BikeDist") {
-            return <BikeDistanceLog />;
+            return <BikeDistanceLog user_id={this.props.user_id}/>;
         } else if (this.state.challengeType === "BikeSpeed") {
-            return <BikeSpeedLog />;
+            return <BikeSpeedLog user_id={this.props.user_id}/>;
         } else {
             return <ChallengePage />;
         }
     };
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            logs: [],
-            group_challenge_id: 1,
-        }
-    }
 
-    componentDidMount() {
-        // API.getUserRunningDistLogs(1)
-        //     .then(res => {
-        //         console.log("This is the response" + JSON.stringify(res))
-        //         this.setState({logs:res.data})
-        //         console.log("***********" + JSON.stringify(res))
-        //     })
-        //     .catch(err => console.log(err))
-    }
+
 
     render() {
+        console.log(this.props.user_id+"NICKNICKNICK")
         return (
             <div>
                 <div>
@@ -58,12 +45,7 @@ class UserData extends Component {
         );
     }
 }
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         logs: []
-    //     }
-    // }
+
 
 //     render() {
 //         return (<div>
