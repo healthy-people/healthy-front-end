@@ -4,12 +4,11 @@ import M from "materialize-css";
 import MessageBoard from "../MessageBoard/MessageBoard";
 import Leaderboard from "../Leaderboard/Leaderboard";
 import UserData from "../UserData/UserData"
+import Auth, { user } from '../../utilities/authorizer';
 
-class ChallengePage extends Component {
-    componentDidMount() {
-        M.AutoInit()
-    }
-    render() {
+
+function ChallengePage() {
+    const challengeUser = user.id;
         return (
             <div>
                 <nav className="nav-extended blue-grey">
@@ -45,16 +44,15 @@ class ChallengePage extends Component {
                 </div>
                 <div id="leaderboard" className="col s12 center">
                     <h3>Leaderboard</h3>
-                    <Leaderboard/>
+                    {/* <Leaderboard user_id={user.id}/> */}
                 </div>
                 <div id="messageBoard" className="col s12 center">
                     <h3>Message Board</h3>
-                    <MessageBoard/>
+                    <MessageBoard user_id={challengeUser}/>
                 </div>
-                {/* <FloatingActionButton /> */}
             </div>
         );
-    }
+    
 }
 
 export default ChallengePage;

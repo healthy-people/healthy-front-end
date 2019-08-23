@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import "./Leaderboard.css"
 import API from "../../utilities/API.js"
 import moment from "moment";
+import Auth, { user } from '../../utilities/authorizer';
 
 class Leaderboard extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            logs: []
+            logs: [],
         }
     }
+    
 
     componentDidMount() {
         API.getRunningDistLogs(1)
@@ -36,7 +38,7 @@ class Leaderboard extends Component {
                         <th>Distance(mi)</th>
                     </tr>
                 </thead>
-                <tbody>
+                {/* <tbody>
                     {this.state.logs.map(log =>
                     <tr key={log.id}>
                         <td>{log.user_id}</td>
@@ -45,7 +47,7 @@ class Leaderboard extends Component {
                         <td>{log.running_distance}</td>
                     </tr>
                     )}
-                </tbody>
+                </tbody> */}
             </table>
         </div>
         )

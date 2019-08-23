@@ -66,13 +66,7 @@ function Main() {
     <div>
       <Router>
         <div>
-          <Route exact path="/" component={LoginSignUpModal} />
-          <Route exact path="/homepage" component={HomePage} />
           <Route exact path="/challengepage" component={ChallengePage} />
-          <Route exact path="/pickrunchallenge" component={Run} />
-          <Route exact path="/pickbikechallenge" component={Bike} />
-          <Route exact path="/pickabstainchallenge" component={Abstain} />
-          <Route exact path="/pickwaterchallenge" component={Water} />
         </div>
       </Router>
       <LoginSignUpModal />
