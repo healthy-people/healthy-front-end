@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 //import './main.css';
-//import { BrowserRouter as Router, Route } from "react-router-dom";
 import Run from "../../pages/Run/Run";
 import Pubsub from '../../utilities/pubsub';
 import LoginSignUpModal from '../LoginSignUpModal/LoginSignUpModal';

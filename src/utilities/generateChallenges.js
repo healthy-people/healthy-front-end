@@ -19,4 +19,4 @@ var GenerateChallenges = {};
 
 })(GenerateChallenges);
 
-export default GenerateChallenges;
+// export default GenerateChallenges;

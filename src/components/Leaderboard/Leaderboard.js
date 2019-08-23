@@ -10,6 +10,7 @@ class Leaderboard extends Component {
         super(props)
         this.state = {
             logs: [],
+            user_id: ""
         }
     }
     
@@ -29,25 +30,21 @@ class Leaderboard extends Component {
             {/* <div>
                 <h3>Leaderboard</h3>
             </div> */}
-            <table class="striped centered">
+            <table className="striped centered">
                 <thead>
                     <tr>
                         <th>User</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Distance(mi)</th>
+                        <th>Total Distance(mi)</th>
                     </tr>
                 </thead>
-                {/* <tbody>
+                <tbody>
                     {this.state.logs.map(log =>
-                    <tr key={log.id}>
-                        <td>{log.user_id}</td>
-                        <td>{moment(log.createdAt).format('MM/DD/YY')}</td>
-                        <td>{moment(log.createdAt).format('hh:mm a')}</td>
+                    <tr key={log.user_id}>
+                        <td>{log.username}</td>
                         <td>{log.running_distance}</td>
                     </tr>
                     )}
-                </tbody> */}
+                </tbody>
             </table>
         </div>
         )

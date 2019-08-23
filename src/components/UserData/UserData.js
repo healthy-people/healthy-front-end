@@ -27,6 +27,24 @@ class UserData extends Component {
         }
     };
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            logs: [],
+            group_challenge_id: 1,
+        }
+    }
+
+    componentDidMount() {
+        // API.getUserRunningDistLogs(1)
+        //     .then(res => {
+        //         console.log("This is the response" + JSON.stringify(res))
+        //         this.setState({logs:res.data})
+        //         console.log("***********" + JSON.stringify(res))
+        //     })
+        //     .catch(err => console.log(err))
+    }
+
     render() {
         return (
             <div>
