@@ -10,7 +10,7 @@ import ChallengePage from "../ChallengePage/ChallengePage"
 
 class UserData extends Component {
     state = {
-        challengeType: "BikeDist"
+        challengeType: "RunDist"
     }
 
     renderPage = () => {

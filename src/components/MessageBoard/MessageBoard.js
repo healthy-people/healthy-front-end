@@ -7,20 +7,22 @@ import Auth, {user} from '../../utilities/authorizer'
 
 class MessageBoard extends Component {
 
+
     constructor(props) {
         super(props)
         this.state = {
             showItemIndex: null,
             challenge_id: 1,
             messages: [],
+            user_id: "",
             message_body: "",
-            message_author: user.id
+            message_author: ""
         }
         
     }
 
     componentDidMount() {
-        console.log("This is the user info: "+ JSON.stringify(user.id))
+        console.log("These are the message for CHallenge: ")
         API.getMessages(1)
             .then(res => {
                 console.log("Message board" + JSON.stringify(res.data))
@@ -53,19 +55,21 @@ class MessageBoard extends Component {
         let newMessageObj = {
              message_body: message_body,
              message_author: message_author,
-             group_challenge_id: challenge_id
+             group_challenge_id: challenge_id,
+             user_id: this.props.user_id
         }
         API.sendMessage(newMessageObj)
             .then(res => {
                 console.log("This is what I sent" + JSON.stringify(res.data))
                 this.setState({
-                    message_body: ""
+                    message_body: "",
                 })
             })
             .catch(err => console.log(err))
     }
 
     render() {
+        console.log(this.props.user_id)
         return (
             <div className="container">
                 <ul className="col s12 collapsible">
@@ -75,7 +79,7 @@ class MessageBoard extends Component {
                             showMe={this.state.showItemIndex == messages.id}
                             key={messages.id}
                             index={messages.id}
-                            message_author={messages.message_author}
+                            message_author={messages.user_id}
                             message_body={messages.message_body}
                             createdAt={messages.createdAt} />
                     ))}

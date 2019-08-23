@@ -7,7 +7,7 @@ import FAB from '../FloatingButton/Fab';
 // import GenerateChallenges from '../../utilities/generateChallenges';
 
 function ChallengeContainer() {
-
+    console.log(user.id + "hiiiiii")
     const [challengeListFetched, setChallengeListFetched] = useState(false);
     const [challengeList, setChallengeList] = useState([]);
 
