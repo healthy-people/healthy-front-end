@@ -8,7 +8,6 @@ import Auth, { user } from '../../utilities/authorizer';
 
 
 function ChallengePage() {
-    const challengeUser = user.id;
         return (
             <div>
                 <nav className="nav-extended blue-grey">
@@ -33,22 +32,22 @@ function ChallengePage() {
                     <div className="row blue-grey">
                         <i className="account_pic material-icons">account_circle</i>
                         <div className="usernameText col s12"><li>Username</li></div>
-                        <div className="daysChallengeText col s12"><li>___ Days on Challenge</li></div>
+                        {/* <div className="daysChallengeText col s12"><li>___ Days on Challenge</li></div> */}
                     </div>
                     <li><a href="#!"><i className="settingsIcon material-icons">settings</i><p>Settings</p></a></li>
                     <div className="col s12" id="logoutBtn"><li><a className="waves-effect waves-light btn-large " href="#!">Logout</a></li></div>
                 </ul>
 
                 <div id="userData" className="col s12 center">
-                    <UserData />
+                    <UserData user_id={user.id}/>
                 </div>
                 <div id="leaderboard" className="col s12 center">
                     <h3>Leaderboard</h3>
-                    {/* <Leaderboard user_id={user.id}/> */}
+                    <Leaderboard user_id={user.id}/>
                 </div>
                 <div id="messageBoard" className="col s12 center">
                     <h3>Message Board</h3>
-                    <MessageBoard user_id={challengeUser}/>
+                    <MessageBoard user_id={user.id}/>
                 </div>
             </div>
         );

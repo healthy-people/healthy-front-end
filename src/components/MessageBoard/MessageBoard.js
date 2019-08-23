@@ -14,9 +14,8 @@ class MessageBoard extends Component {
             showItemIndex: null,
             challenge_id: 1,
             messages: [],
-            user_id: "",
+            // user_id: "",
             message_body: "",
-            message_author: ""
         }
         
     }
@@ -51,10 +50,10 @@ class MessageBoard extends Component {
 
     messageSubmit = (event) => {
         event.preventDefault();
-        let { message_body, message_author, challenge_id } = this.state;
+        let { message_body, user_id, challenge_id } = this.state;
         let newMessageObj = {
              message_body: message_body,
-             message_author: message_author,
+             user_id: user_id,
              group_challenge_id: challenge_id,
              user_id: this.props.user_id
         }
@@ -79,7 +78,7 @@ class MessageBoard extends Component {
                             showMe={this.state.showItemIndex == messages.id}
                             key={messages.id}
                             index={messages.id}
-                            message_author={messages.user_id}
+                            username={messages.username}
                             message_body={messages.message_body}
                             createdAt={messages.createdAt} />
                     ))}
