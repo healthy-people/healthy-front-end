@@ -18,7 +18,6 @@ class MessageBoard extends Component {
             showItemIndex: null,
             challenge_id: 1,
             messages: [],
-            // user_id: "",
             message_body: "",
         }
 
@@ -56,10 +55,12 @@ class MessageBoard extends Component {
         event.preventDefault();
         let { message_body, user_id, challenge_id } = this.state;
         let newMessageObj = {
+
             message_body: message_body,
             user_id: user_id,
             group_challenge_id: challenge_id,
             user_id: this.props.user_id
+
         }
         API.sendMessage(newMessageObj)
             .then(res => {

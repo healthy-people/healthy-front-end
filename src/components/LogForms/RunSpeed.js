@@ -7,7 +7,7 @@ class RunSpeedLog extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            user_id: 4,
+            
             group_challenge_id: 3,
             running_pace: "",
             logs: [],

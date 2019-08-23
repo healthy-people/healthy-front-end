@@ -7,7 +7,6 @@ class RunDistanceLog extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            user_id: 1,
             group_challenge_id: 1,
             running_distance: "",
             logs: [],
@@ -48,7 +47,7 @@ class RunDistanceLog extends React.Component {
         });
         let { user_id, group_challenge_id, running_distance } = this.state;
         let newRunningLog = {
-            user_id: user_id,
+            user_id: this.props.user_id,
             group_challenge_id: group_challenge_id,
             running_distance: running_distance
         }
@@ -99,7 +98,7 @@ class RunDistanceLog extends React.Component {
                     </form>
                 </div>
                 <div className="row">
-                    <table class="striped centered">
+                    <table className="striped centered">
                         <thead>
                             <tr>
                                 <th>Date Logged</th>
