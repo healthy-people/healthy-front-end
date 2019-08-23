@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import MessageItem from "../MessageItem/MessageItem"
 import "./MessageBoard.css"
 import API from "../../utilities/API.js"
-import Auth, {user} from '../../utilities/authorizer'
+import M from "materialize-css";
+import Auth, { user } from '../../utilities/authorizer'
 
 
 class MessageBoard extends Component {
+    componentDidMount(){
+        M.AutoInit()
+    }
 
 
     constructor(props) {
@@ -16,15 +20,15 @@ class MessageBoard extends Component {
             messages: [],
             message_body: "",
         }
-        
+
     }
 
-    componentDidMount() {
+    componentWillMount() {
         console.log("These are the message for CHallenge: ")
         API.getMessages(1)
             .then(res => {
                 console.log("Message board" + JSON.stringify(res.data))
-                this.setState({messages:res.data})
+                this.setState({ messages: res.data })
                 console.log("***********" + JSON.stringify(res.data))
             })
             .catch(err => console.log(err))
@@ -51,9 +55,12 @@ class MessageBoard extends Component {
         event.preventDefault();
         let { message_body, user_id, challenge_id } = this.state;
         let newMessageObj = {
-             message_body: message_body,
-             group_challenge_id: challenge_id,
-             user_id: this.props.user_id
+
+            message_body: message_body,
+            user_id: user_id,
+            group_challenge_id: challenge_id,
+            user_id: this.props.user_id
+
         }
         API.sendMessage(newMessageObj)
             .then(res => {
@@ -63,23 +70,31 @@ class MessageBoard extends Component {
                 })
             })
             .catch(err => console.log(err))
+        API.getMessages(1)
+            .then(res => {
+                console.log("Message board" + JSON.stringify(res.data))
+                this.setState({ messages: res.data })
+                console.log("***********" + JSON.stringify(res.data))
+            })
+            .catch(err => console.log(err))
     }
 
     render() {
         console.log(this.props.user_id)
+        let messages = this.state.messages.map(messages => (
+            <MessageItem
+                handleClick={this.handleClick}
+                showMe={this.state.showItemIndex == messages.id}
+                key={messages.id}
+                index={messages.id}
+                username={messages.username}
+                message_body={messages.message_body}
+                createdAt={messages.createdAt} />
+        ))
         return (
             <div className="container">
                 <ul className="col s12 collapsible">
-                    {this.state.messages.map(messages => (
-                        <MessageItem
-                            handleClick={this.handleClick}
-                            showMe={this.state.showItemIndex == messages.id}
-                            key={messages.id}
-                            index={messages.id}
-                            username={messages.username}
-                            message_body={messages.message_body}
-                            createdAt={messages.createdAt} />
-                    ))}
+                    {messages}
                 </ul>
 
                 <div className="row">
