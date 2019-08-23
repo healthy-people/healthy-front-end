@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Pubsub from './pubsub';
-import Auth, { user } from './auth';
+import Auth, { user } from './authorizer';
 
 var GenerateChallenges = {};
 

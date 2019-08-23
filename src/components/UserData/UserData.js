@@ -9,7 +9,7 @@ class UserData extends Component {
                 <h3>User Data</h3>
                 <a class="waves-effect waves-light btn">Create new log!</a>
             </div>
-            <table class="striped centered">
+            <table className="striped centered">
                 <thead>
                     <tr>
                         <th>Date Logged</th>
