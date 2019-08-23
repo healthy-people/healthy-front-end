@@ -1,40 +1,80 @@
 import React, { Component } from 'react';
 import "./UserData.css"
+import RunDistanceLog from "../LogForms/RunDistance"
+import BikeDistanceLog from "../LogForms/BikeDistance"
+import moment from "moment"
+import API from "../../utilities/API.js"
+import RunSpeedLog from '../LogForms/RunSpeed';
+import BikeSpeedLog from "../LogForms/BikeSpeed";
+import ChallengePage from "../ChallengePage/ChallengePage"
 
 class UserData extends Component {
-
-    render() {
-        return (<div>
-            <div>
-                <h3>User Data</h3>
-                <a class="waves-effect waves-light btn">Create new log!</a>
-            </div>
-            <table class="striped centered">
-                <thead>
-                    <tr>
-                        <th>Date Logged</th>
-                        <th>Item Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        )
+    state = {
+        challengeType: "BikeDist"
     }
 
+    renderPage = () => {
+        if (this.state.challengeType === "RunDist") {
+            return <RunDistanceLog />;
+        } else if (this.state.challengeType === "RunSpeed") {
+            return <RunSpeedLog />;
+        } else if (this.state.challengeType === "BikeDist") {
+            return <BikeDistanceLog />;
+        } else if (this.state.challengeType === "BikeSpeed") {
+            return <BikeSpeedLog />;
+        } else {
+            return <ChallengePage />;
+        }
+    };
+
+    render() {
+        return (
+            <div>
+                <div>
+                    <h3>User Data</h3>
+                </div>
+                <div>
+                    {this.renderPage()}
+                </div>
+            </div>
+        );
+    }
 }
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         logs: []
+    //     }
+    // }
+
+//     render() {
+//         return (<div>
+//             <div>
+//                 <h3>User Data</h3>
+//             </div>
+//             <RunSpeedLog />
+//             <RunDistanceLog />
+//             <BikeDistanceLog />
+//             <table class="striped centered">
+//                 <thead>
+//                     <tr>
+//                         <th>Date Logged</th>
+//                         <th>Logged</th>
+//                     </tr>
+//                 </thead>
+//                 <tbody>
+//                 {this.state.logs.map(log =>
+//                     <tr key={log.id}>
+//                         <td>{moment(log.createdAt).format('MM/DD/YY')}</td>
+//                         <td>{log.user_log}</td>
+//                     </tr>
+//                     )}
+//                 </tbody>
+//             </table>
+//         </div>
+//         )
+//     }
+
+// }
 
 export default UserData;

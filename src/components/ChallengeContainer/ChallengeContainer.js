@@ -70,7 +70,7 @@ function ChallengeContainer() {
 
     return (
         <div>
-            {generateChallengeListItems()}
+            {/* {generateChallengeListItems()} */}
         </div>
     )
 }
