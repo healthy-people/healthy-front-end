@@ -1,5 +1,5 @@
 import React from 'react';
-import WhatLength from "../../components/WhatLength/WhatLength"
+// import WhatLength from "../../components/WhatLength/WhatLength"
 
 class Water extends React.Component {
 
@@ -10,7 +10,7 @@ class Water extends React.Component {
     render() {
         return(
         <div>
-            <WhatLength/>
+            {/* <WhatLength/> */}
             <div className="row center">
                 {/* <a class="waves-effect waves-light btn" onClick={this.waterChallenge}>Submit</a> */}
                 <a onClick={this.waterChallenge}>Submit</a>

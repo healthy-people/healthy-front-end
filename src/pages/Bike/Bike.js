@@ -1,5 +1,5 @@
 import React from 'react';
-import WhatLength from "../../components/WhatLength/WhatLength"
+// import WhatLength from "../../components/WhatLength/WhatLength"
 import "./Bike.css"
 import API from "../../utilities/API";
 import DatePicker from "react-datepicker";
@@ -64,7 +64,7 @@ class Bike extends React.Component {
     render() {
         return (
             <div>
-                <WhatLength />
+                {/* <WhatLength /> */}
                 <div className="container">
                     <div className="row">
                         <div className="input-field col s6">

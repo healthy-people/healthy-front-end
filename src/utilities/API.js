@@ -11,6 +11,7 @@ export default {
     addChallengeMember : (data) => axios.post("/api/challenge_member/create", data),
     deleteChallengeMember: (data) => axios.delete("/api/challenge_member/delete", data),
     addRunningDistLog: (data) => axios.post("/api/running_distance_logs/create", data),
+    getUserRunningDistLogs: (user_id, group_challenge_id) => axios.get("/api/running_distance_logs/user/"+user_id+"/"+group_challenge_id),
     getRunningDistLogs: (group_challenge_id) => axios.get("/api/running_distance_logs/"+group_challenge_id),
     addRunningPaceLog: (data) => axios.post("/api/running_pace_logs/create", data),
     getRunningPaceLogs: (group_challenge_id) => axios.get("/api/running_pace_logs/"+group_challenge_id),
