@@ -26,31 +26,56 @@ function LoginSignUpModal() {
     const [confirmPasswordVal, setConfirmPasswordVal] = useState('');
 
     useEffect(() => {
-        Pubsub.subscribe('login', this, closeModal);
-        Pubsub.subscribe('logout', this, openModal);
+        //Pubsub.subscribe('modal_toogle', this, handleModalToggle);
+        Pubsub.subscribe('login', this, handleLogin);
+        Pubsub.subscribe('logout', this, handleSignout);
         Pubsub.subscribe('auth_error', this, handleErrorInfo);
         Auth.checkForExistingSession();
         return (() => {
+            //Pubsub.unsubscribe('modal_toogle', this);
             Pubsub.unsubscribe('login', this);
             Pubsub.unsubscribe('logout', this);
             Pubsub.unsubscribe('auth_error', this);
         });
     }, []);
 
+    // const handleModalToggle = (type) => {
+    //     if (type === loginType.login) {
+    //       setModalType(loginType.login);
+    //       setChangeTypeBtnText(changeTypeBtnTextValues.login);
+    //     } else if (type === loginType.signup) {
+    //       setModalType(loginType.signup);
+    //       setChangeTypeBtnText(changeTypeBtnTextValues.signup);
+    //     }
+    //     setErrorMessage('');
+    //     setModalIsOpen(false);
+    //   }
+
+
     const toggleModalType = () => {
-        setErrorMessage('');
+        //setErrorMessage('');
         let newModalType = modalType === loginType.login ? loginType.signup : loginType.login;
         let newChangeBtnText = modalType === loginType.login ? changeTypeBtnTextValues.signup : changeTypeBtnTextValues.login;
         setModalType(newModalType);
         setChangeTypeBtnText(newChangeBtnText);
     }
 
-    const openModal = () => {
-        setModalIsOpen(true);
-    }
-    const closeModal = () => {
+    const handleLogin = () => {
         setModalIsOpen(false);
+        //Pubsub.publish('login', true);
     }
+
+    const handleSignout = () => {
+        setModalIsOpen(true);
+        //Pubsub.publish('login', false);
+    }
+
+    // const openModal = () => {
+    //     setModalIsOpen(true);
+    // }
+    // const closeModal = () => {
+    //     setModalIsOpen(false);
+    // }
     const handleUsernameChange = (event) => {
         setUsernameVal(event.target.value);
     }
