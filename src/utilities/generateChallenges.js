@@ -2,7 +2,6 @@ import axios from 'axios';
 import Pubsub from './pubsub';
 import Auth, { user } from './authorizer';
 
-
 var GenerateChallenges = {};
 
 (function (obj) {
@@ -20,4 +19,4 @@ var GenerateChallenges = {};
 
 })(GenerateChallenges);
 
-export default GenerateChallenges;
+// export default GenerateChallenges;

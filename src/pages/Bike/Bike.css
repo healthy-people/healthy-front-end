@@ -1,3 +1,33 @@
-.hide {
-    display: none;
+.bikePage{
+    background-image: linear-gradient(to bottom, rgb(225, 153, 44), rgb(253, 189, 94), rgb(247, 32, 99));
+    background-size: cover;
+    height: 95%;
+    width: 100%;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    color: whitesmoke;
+    z-index: -1;
+}
+
+.bikeLabel{
+    color: whitesmoke !important;
+}
+
+.bikeSpan{
+    color: whitesmoke;
+}
+
+.bikeFinishBtn{
+    border-radius: 20px;
+    background-color: #fff;
+    color: teal;
+}
+
+#bikeName{
+    color: whitesmoke;
+}
+
+#bikeMiles{
+    color: whitesmoke;
 }

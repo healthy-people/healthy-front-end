@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 //import './main.css';
-//import { BrowserRouter as Router, Route } from "react-router-dom";
 import Run from "../../pages/Run/Run";
 import Pubsub from '../../utilities/pubsub';
 import LoginSignUpModal from '../LoginSignUpModal/LoginSignUpModal';
@@ -13,6 +12,7 @@ import Water from '../../pages/Water/Water';
 import ChallengePage from '../ChallengePage/ChallengePage';
 import ChallengeContainer from '../ChallengeContainer/ChallengeContainer';
 import FAB from '../FloatingButton/Fab';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function Main() {
 
@@ -45,23 +45,29 @@ function Main() {
 
   const pageDirector = () => {
     if (authenticated) {
-      switch (challengeType){
+      switch (challengeType) {
         case ('run'):
-            return <Run />;
+          return <Run />;
         case ('bike'):
-            return <Bike />;
+          return <Bike />;
         case ('water'):
-            return <Water />;
+          return <Water />;
         case ('abstain'):
-            return <Abstain />;
+          return <Abstain />;
         default:
-            return <ChallengeContainer />
+          return <ChallengeContainer />
       }
     }
   }
 
   return (
+
     <div>
+      <Router>
+        <div>
+          <Route exact path="/challengepage" component={ChallengePage} />
+        </div>
+      </Router>
       <LoginSignUpModal />
       <FAB />
       {pageDirector()}

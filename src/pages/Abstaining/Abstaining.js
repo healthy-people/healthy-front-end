@@ -1,5 +1,5 @@
 import React from 'react';
-import WhatLength from "../../components/WhatLength/WhatLength";
+// import WhatLength from "../../components/WhatLength/WhatLength";
 // import { ParserOptions } from '@babel/core';
 
 class Abstain extends React.Component {
@@ -15,7 +15,7 @@ class Abstain extends React.Component {
     render() {
         return (
             <div>
-                <WhatLength/>
+                {/* <WhatLength/> */}
     
                     <div className="container">
                         <div className="row">

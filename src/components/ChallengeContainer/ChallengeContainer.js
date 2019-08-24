@@ -4,13 +4,13 @@ import Pubsub from '../../utilities/pubsub';
 import Challenge from '../Challenge/Challenge';
 import API from '../../utilities/API';
 import FAB from '../FloatingButton/Fab';
-import GenerateChallenges from '../../utilities/generateChallenges';
+// import GenerateChallenges from '../../utilities/generateChallenges';
 
 function ChallengeContainer() {
+    console.log(user.id + "hiiiiii")
+    const [challengeListFetched, setChallengeListFetched] = useState(false);
+    const [challengeList, setChallengeList] = useState([]);
 
-    // const [authenticated, setAuthenticated] = useState(false);
-    // const [challengeListFetched, setChallengeListFetched] = useState(false);
-    // const [challengeList, setChallengeList] = useState([]);
 
     // useEffect(() => {
     //     Pubsub.subscribe('login', this, handleLogin);
@@ -94,7 +94,7 @@ function ChallengeContainer() {
 
     return (
         <div>
-            {generateChallengeListItems()}
+            {/* {generateChallengeListItems()} */}
         </div>
     )
 }
