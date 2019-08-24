@@ -53,7 +53,7 @@ class UserData extends Component {
         return (
             <div>
                 <div>
-                    <h3>User Data</h3>
+                    <h3>Log Page</h3>
                 </div>
                 <div>
                     {this.renderPage()}

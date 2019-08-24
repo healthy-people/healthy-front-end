@@ -28,6 +28,7 @@ class Navbar extends Component {
                     </div>
                 </nav>
 
+
                 <ul className="sidenav" id="mobile-demo" style={{ backgroundColor: 'rgb(70, 89, 152)' }}>
                     <li className="center">
                         <div className="user-view">
@@ -40,6 +41,7 @@ class Navbar extends Component {
                         </div>
                     </li>
                     <div className="col s12" id="logoutBtn"><li><a className="logoutBtn waves-effect waves-light btn-large sidenav-close" onClick={this.handleSignOut}>Logout</a></li></div>
+
                 </ul>
             </div>
         );

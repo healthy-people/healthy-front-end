@@ -99,20 +99,20 @@ class RunDistanceLog extends React.Component {
                 </div>
                 <div className="row">
                     <table className="striped centered">
-                        <thead>
+                        {/* <thead>
                             <tr>
                                 <th>Date Logged</th>
                                 <th>Logged</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {this.state.logs.map(log =>
+                        <tbody> */}
+                            {/* {this.state.logs.map(log =>
                                 <tr key={log.id}>
                                     <td>{moment(log.createdAt).format('MM/DD/YY')}</td>
                                     <td>{log.running_distance}</td>
                                 </tr>
-                            )}
-                        </tbody>
+                            )} */}
+                        {/* </tbody> */}
                     </table>
                 </div>
             </div>
