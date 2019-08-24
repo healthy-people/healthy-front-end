@@ -8,11 +8,13 @@ import M from "materialize-css";
 import Auth, { user } from '../../utilities/authorizer'
 import axios from 'axios';
 import "./HomePage.css"
+const baseUrl = process.env.REACT_APP_BASE_URL || '/'
 
 class HomePage extends Component {
+
     
     componentDidMount(){
-        axios.get("/api/group_challenge/1")
+        axios.get(baseUrl+ "/api/group_challenge/1")
         .then(res => {
             console.log("Message board" + JSON.stringify(res.data))
             this.setState({ challenges: res.data })
