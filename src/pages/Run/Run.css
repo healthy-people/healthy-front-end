@@ -1,3 +1,52 @@
-.hide {
-    display: none;
+.exitBtn{
+    margin-top: 7px;
+    margin-right: 7px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    background-color: white;
+    color: teal;
+    border: 1px solid teal;
 }
+
+.runPage{
+    background-image: linear-gradient(to bottom, rgb(225, 153, 44), rgb(253, 189, 94), rgb(247, 32, 99));
+    background-size: cover;
+    height: 95%;
+    width: 100%;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    color: whitesmoke;
+    z-index: -1;
+}
+
+input{
+    border-bottom: 1px solid whitesmoke !important;
+}
+
+.runLabel{
+    color: whitesmoke !important;
+}
+
+.challengeDate{
+    color: whitesmoke;
+}
+
+.runSpan{
+    color: whitesmoke;
+}
+
+.runFinishBtn{
+    border-radius: 20px;
+    background-color: #fff;
+    color: teal;
+}
+
+#runMiles{
+    color: whitesmoke;
+}
+
+#runName{
+    color: whitesmoke;
+}
+

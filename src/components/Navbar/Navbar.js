@@ -19,7 +19,7 @@ class Navbar extends Component {
         return (
             <div>
                 <nav>
-                    <div className="nav-wrapper blue-grey">
+                    <div className="nav-wrapper" style={{backgroundColor:'rgb(70, 89, 152)'}}>
                         <a href="#!" className="brand-logo center">HealthMate</a>
                         <a href="#!" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
@@ -28,8 +28,8 @@ class Navbar extends Component {
                     </div>
                 </nav>
 
-                <ul className="sidenav" id="mobile-demo">
-                    <div className="row blue-grey">
+                <ul className="sidenav" id="mobile-demo" style={{backgroundColor:'rgb(70, 89, 152)'}}>
+                    <div className="row">
                         <i className="account_pic material-icons">account_circle</i>
                         <div className="usernameText col s12"><li>Username</li></div>
                         <div className="daysChallengeText col s12"><li>___ Days on Challenge</li></div>
