@@ -55,7 +55,7 @@ function Main() {
         case ('abstain'):
           return <Abstain />;
         default:
-          return <ChallengeContainer />
+          return <ChallengePage />
       }
     }
   }
@@ -63,11 +63,11 @@ function Main() {
   return (
 
     <div>
-      <Router>
+      {/* <Router>
         <div>
           <Route exact path="/challengepage" component={ChallengePage} />
         </div>
-      </Router>
+      </Router> */}
       <LoginSignUpModal />
       <FAB />
       {pageDirector()}

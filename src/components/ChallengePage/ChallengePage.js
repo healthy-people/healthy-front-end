@@ -28,15 +28,15 @@ function ChallengePage() {
                     </div>
                 </nav>
 
-                <ul className="sidenav" id="mobile-demo">
+                {/* <ul className="sidenav" id="mobile-demo">
                     <div className="row blue-grey">
                         <i className="account_pic material-icons">account_circle</i>
-                        <div className="usernameText col s12"><li>Username</li></div>
+                        <div className="usernameText col s12"><li>Username</li></div> */}
                         {/* <div className="daysChallengeText col s12"><li>___ Days on Challenge</li></div> */}
-                    </div>
+                    {/* </div>
                     <li><a href="#!"><i className="settingsIcon material-icons">settings</i><p>Settings</p></a></li>
                     <div className="col s12" id="logoutBtn"><li><a className="waves-effect waves-light btn-large " href="#!">Logout</a></li></div>
-                </ul>
+                </ul> */}
 
                <div className="challengePageContainer">
                     <div id="userData" className="col s12 center">
