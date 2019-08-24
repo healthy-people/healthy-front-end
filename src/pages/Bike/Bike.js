@@ -109,7 +109,7 @@ class Bike extends React.Component {
                             </p>
                             <p>
                                 <label>
-                                    <input name="speed" type="radio" onClick={this.showSpeed} />
+                                    <input name="speed" type="radio" />
                                     <span className="bikeSpan">Speed</span>
                                 </label>
                             </p>
