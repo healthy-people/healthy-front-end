@@ -14,7 +14,7 @@ class HomePage extends Component {
 
     
     componentDidMount(){
-        axios.get(baseUrl+ "/api/group_challenge/1")
+        axios.get(baseUrl+ "api/group_challenge/1")
         .then(res => {
             console.log("Message board" + JSON.stringify(res.data))
             this.setState({ challenges: res.data })
