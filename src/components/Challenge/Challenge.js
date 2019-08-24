@@ -1,10 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 
-//this creates format.style for each challenge
-function Challenge(props){
-    return (
-        <span>{props.challenge_name}</span>
-      );
+class Challenge extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
+
+
+  
+
+    render() {
+        return (
+                <a href="/challengepage" className="collection-item">{this.props.challenge_name}</a>
+
+        );
+    }
 }
+
 
 export default Challenge;

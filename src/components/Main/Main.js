@@ -66,6 +66,7 @@ function Main() {
       <Router>
         <div>
           <Route exact path="/challengepage" component={ChallengePage} />
+          <Route exact path="/homepage" component={HomePage}/>
         </div>
       </Router>
       <LoginSignUpModal />
