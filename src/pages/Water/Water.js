@@ -12,8 +12,11 @@ class Water extends React.Component {
         <div>
             {/* <WhatLength/> */}
             <div className="row center">
+                <div>
+                    <h4>Are you sure you want to create a water challenge?</h4>
+                </div>
                 {/* <a class="waves-effect waves-light btn" onClick={this.waterChallenge}>Submit</a> */}
-                <a onClick={this.waterChallenge}>Submit</a>
+                <a class="waves-effect waves-light btn" onClick={this.waterChallenge}>Submit</a>
             </div>
         </div>
         )
