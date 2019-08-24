@@ -9,17 +9,17 @@ class Navbar extends Component {
         M.AutoInit()
     }
 
-    handleSignOut = (event) =>{
+    handleSignOut = (event) => {
         event.preventDefault();
         Auth.sendSignoutRequest();
         Pubsub.publish('logout', true);
     }
 
-     render() {
+    render() {
         return (
             <div>
                 <nav>
-                    <div className="nav-wrapper" style={{backgroundColor:'rgb(70, 89, 152)'}}>
+                    <div className="nav-wrapper" style={{ backgroundColor: 'rgb(70, 89, 152)' }}>
                         <a href="#!" className="brand-logo center">HealthMate</a>
                         <a href="#!" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
@@ -28,14 +28,20 @@ class Navbar extends Component {
                     </div>
                 </nav>
 
-                <ul className="sidenav" id="mobile-demo" style={{backgroundColor:'rgb(70, 89, 152)'}}>
-                    <div className="row">
-                        <i className="account_pic material-icons">account_circle</i>
-                        {/* <div className="usernameText col s12"><li>Username</li></div>
-                        <div className="daysChallengeText col s12"><li>___ Days on Challenge</li></div> */}
-                    </div>
-                    <li><a href="#!"><i className="settingsIcon material-icons">settings</i><p>Settings</p></a></li>
-                    <div className="col s12" id="logoutBtn"><li><a className="waves-effect waves-light btn-large " onClick={this.handleSignOut}>Logout</a></li></div>
+
+                <ul className="sidenav" id="mobile-demo" style={{ backgroundColor: 'rgb(70, 89, 152)' }}>
+                    <li className="center">
+                        <div className="user-view">
+                            <div className="background">
+                                <img src={'https://wallpaperstream.com/wallpapers/thumbnails/minimal-hd/Minimal-HD-Geometric-Landscape-Wallpaper_thumb.jpg'} alt="backgroungImage" className="userBGI" />
+                            </div>
+                            <i className="account_pic material-icons">account_circle</i>
+                            <br />
+                            <a href="#!" style={{ color: "white", fontWeight: "bold" }}>Settings</a>
+                        </div>
+                    </li>
+                    <div className="col s12" id="logoutBtn"><li><a className="logoutBtn waves-effect waves-light btn-large sidenav-close" onClick={this.handleSignOut}>Logout</a></li></div>
+
                 </ul>
             </div>
         );

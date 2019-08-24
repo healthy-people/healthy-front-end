@@ -143,7 +143,7 @@ function LoginSignUpModal() {
                     <div className="row">
                         <div className="input-field col s12">
                             <input id="signUpEmail" type="email" className="validate" value={emailVal} onChange={handleEmailChange} />
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="signUpEmail">Email</label>
                         </div>
                     </div>
                     <div className="row">

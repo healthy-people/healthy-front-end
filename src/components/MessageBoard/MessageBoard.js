@@ -93,7 +93,7 @@ class MessageBoard extends Component {
         ))
         return (
             <div className="container">
-                <ul className="col s12 collapsible">
+                <ul className="col s12 collapsible popout">
                     {messages}
                 </ul>
 
