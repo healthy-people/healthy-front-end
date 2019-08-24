@@ -50,6 +50,7 @@ var user = {};
           console.log('attempt at api/user')
           console.log(user);
           Pubsub.publish('login', null);
+          window.location.href = "/homepage";
         }).catch(error => {
           console.log(error);
           let errorObj = {
