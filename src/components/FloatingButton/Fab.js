@@ -12,11 +12,17 @@ function FloatingActionButton() {
     useEffect(() => {
         Pubsub.subscribe('login', this, handleSignin);
         Pubsub.subscribe('logout', this, handleSignout);
+        //Pubsub.subscribe('authenticated', this, handleSignInSignOut);
         return (() => {
           Pubsub.unsubscribe('login', this);
           Pubsub.unsubscribe('logout', this);
+          //Pubsub.unsubscribe('authenticated', this);
         });
     }, []);
+
+    const handleSignInSignOut = () => {
+        
+    }
 
     const handleSignout = () => {
         setAuthenticated(false);
@@ -36,7 +42,7 @@ function FloatingActionButton() {
         //     return null
         // } else 
         if (challengeType === ('') ){
-            // console.log('challenge type is correct');
+
             return (
             <div className="fixed-action-btn">
                 <div className="btn-floating btn-large">

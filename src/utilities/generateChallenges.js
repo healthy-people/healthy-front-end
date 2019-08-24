@@ -8,11 +8,11 @@ var GenerateChallenges = {};
 
     obj.getAllChallenges = () => {
       if (user.id) {
-        axios.get("/api/group_challenge/"+user_id).then(response => {
-          AllChallenges = JSON.parse(JSON.stringify(response.data));
-          Pubsub.publish('challenges_downloaded', AllChallenges);
+        axios.get("/api/group_challenge/"+user.id).then(response => {
+            GenerateChallenges = JSON.parse(JSON.stringify(response.data));
+            Pubsub.publish('challenges_downloaded', GenerateChallenges);
         }).catch(error => {
-          console.log(error);
+            console.log(error);
         });
       }
     }
