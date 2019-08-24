@@ -3,6 +3,7 @@ import React from 'react';
 import "./Bike.css"
 import API from "../../utilities/API";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 
 class Bike extends React.Component {
@@ -65,16 +66,20 @@ class Bike extends React.Component {
         return (
             <div>
                 {/* <WhatLength /> */}
-                <div className="container">
+                <div className="bikePage container">
+                    <div className="row">
+                        <a className="exitBtn btn-floating btn-small waves-effect waves-light right" href="/">X</a>
+                    </div>
                     <div className="row">
                         <div className="input-field col s6">
-                            <input id="input_text" type="text" data-length="10" name="challenge_name" value={this.state.challenge_name} onChange={this.handleInputChange} />
-                            <label htmlFor="input_text" >Input text</label>
+                            <input id="bikeName" type="text" data-length="10" name="challenge_name" value={this.state.challenge_name} onChange={this.handleInputChange} />
+                            <label className="bikeLabel" htmlFor="input_text" >Challenge Date</label>
                         </div>
                     </div>
                     <div className="row center">
                         <div className="input-field col s6">
                             <DatePicker
+                                className="challengeDate"
                                 selected={this.state.startDate}
                                 onChange={this.handleChangeStart}
                                 name="startDate"
@@ -85,6 +90,7 @@ class Bike extends React.Component {
                     <div className="row center">
                         <div className=" input-field col s6">
                             <DatePicker
+                                className="challengeDate"
                                 selected={this.state.endDate}
                                 onChange={this.handleChangeEnd}
                                 name="endDate"
@@ -98,13 +104,13 @@ class Bike extends React.Component {
                             <p>
                                 <label>
                                     <input name="distance" type="radio" />
-                                    <span>Distance</span>
+                                    <span className="bikeSpan">Distance</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
                                     <input name="speed" type="radio" onClick={this.showSpeed} />
-                                    <span>Speed</span>
+                                    <span className="bikeSpan">Speed</span>
                                 </label>
                             </p>
                         </form>
@@ -115,11 +121,11 @@ class Bike extends React.Component {
                             <div className="row">
                                 <div className='input-field col s3'>
                                     <input id="bikeMiles" name="challenge_length" type="number" value={this.state.challenge_length} onChange={this.handleInputChange} />
-                                    <label htmlFor="bikeMiles">miles</label>
+                                    <label className="bikeLabel" htmlFor="bikeMiles">miles</label>
                                 </div>
                             </div>
                             <div className="row center">
-                                <a className="waves-effect waves-light btn" onClick={this.handleSubmitDistance}>Finish</a>
+                                <a className="bikeFinishBtn waves-effect waves-light btn" onClick={this.handleSubmitDistance}>Finish</a>
                             </div>
                         </form>
                     </div>

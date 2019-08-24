@@ -1,3 +1,24 @@
 #message_board{
     padding-top:0px;
 }
+
+#truncateBody{
+    color: black;
+}
+
+.userNameMessage{
+    color: black;
+}
+
+.collapsible-body{
+    background-color: white;
+}
+
+.messageBody{
+    color: black;
+}
+
+#message_button{
+    border-radius: 20px;
+    background-color: rgb(72, 112, 168);
+}

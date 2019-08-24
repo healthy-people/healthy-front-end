@@ -83,7 +83,7 @@ class RunDistanceLog extends React.Component {
                             />
                         </div>
                         <div>
-                            <a className="waves-effect waves-light btn" onClick={this.messageSubmit}>Submit</a>
+                            <a className="submitRunLog waves-effect waves-light btn" onClick={this.messageSubmit}>Submit</a>
                         </div>
                     </form>
                 </div>

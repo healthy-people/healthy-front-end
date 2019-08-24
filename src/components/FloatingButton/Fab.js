@@ -39,14 +39,14 @@ function FloatingActionButton() {
             // console.log('challenge type is correct');
             return (
             <div className="fixed-action-btn">
-                <div className="btn-floating btn-large red">
+                <div className="btn-floating btn-large">
                     <i className="fab large material-icons" tabIndex="1">add</i>
                 </div>
                 <ul>
-                    <li><button className="btn-floating green" value="run" onClick={() => handleChallengeType('run')}><i className="material-icons">directions_run</i></button></li>
-                    <li><button className="btn-floating yellow darken-1" value="bike" onClick={() => handleChallengeType('bike')}><i className="material-icons">directions_bike</i></button></li>
-                    <li><button className="btn-floating blue" value="water" onClick={() => handleChallengeType('water')}><i className="material-icons">local_drink</i></button></li>
-                    <li><button className="btn-floating red" value="abstain" onClick={() => handleChallengeType('abstain')}><i className="material-icons">smoke_free</i></button></li>
+                    <li><button className="run btn-floating" value="run" onClick={() => handleChallengeType('run')}><i className="material-icons">directions_run</i></button></li>
+                    <li><button className="bike btn-floating" value="bike" onClick={() => handleChallengeType('bike')}><i className="material-icons">directions_bike</i></button></li>
+                    <li><button className="water btn-floating" value="water" onClick={() => handleChallengeType('water')}><i className="material-icons">local_drink</i></button></li>
+                    <li><button className="abstain btn-floating" value="abstain" onClick={() => handleChallengeType('abstain')}><i className="material-icons">smoke_free</i></button></li>
                 </ul>
             </div>
             )

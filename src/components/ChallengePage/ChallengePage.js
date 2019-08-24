@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FloatingActionButton from "../FloatingButton/FabOLD";
-import M from "materialize-css";
+import "./ChallengePage.css"
 import MessageBoard from "../MessageBoard/MessageBoard";
 import Leaderboard from "../Leaderboard/Leaderboard";
 import UserData from "../UserData/UserData"
@@ -38,17 +38,19 @@ function ChallengePage() {
                     <div className="col s12" id="logoutBtn"><li><a className="waves-effect waves-light btn-large " href="#!">Logout</a></li></div>
                 </ul>
 
-                <div id="userData" className="col s12 center">
-                    <UserData user_id={user.id}/>
-                </div>
-                <div id="leaderboard" className="col s12 center">
-                    <h3>Leaderboard</h3>
-                    <Leaderboard user_id={user.id}/>
-                </div>
-                <div id="messageBoard" className="col s12 center">
-                    <h3>Message Board</h3>
-                    <MessageBoard user_id={user.id}/>
-                </div>
+               <div className="challengePageContainer">
+                    <div id="userData" className="col s12 center">
+                        <UserData user_id={user.id}/>
+                    </div>
+                    <div id="leaderboard" className="col s12 center">
+                        <h3>Leaderboard</h3>
+                        <Leaderboard user_id={user.id}/>
+                    </div>
+                    <div id="messageBoard" className="col s12 center">
+                        <h3>Message Board</h3>
+                        <MessageBoard user_id={user.id}/>
+                    </div>
+               </div>
             </div>
         );
     
