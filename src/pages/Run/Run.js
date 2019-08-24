@@ -74,7 +74,7 @@ class Run extends React.Component {
                 {/* <WhatLength /> */}
                 <div className="runPage container center-align">
                     <div className="row">
-                    <a className="exitBtn btn-floating btn-small waves-effect waves-light right" href="/">X</a>
+                    <a className="exitBtn btn-floating btn-small waves-effect waves-light right" href="/challengepage">X</a>
                     </div>
                     <div className="row">
                         <div className="input-field col s6">
@@ -121,7 +121,10 @@ class Run extends React.Component {
                             </p>
                         </form>
                     </div>
-                    <div className="row hide" id="speed">
+                    <div>
+                            <a className="submitRunLog waves-effect waves-light btn" href="/challengepage" onClick={this.handleSumbitDistance}>Submit</a>
+                        </div>
+                    {/* <div className="row hide" id="speed">
                         <div className="center-align">
                             <h5 >How many miles would you like to set for the speed challenge?</h5>
                             <form action="#" className="center-align">
@@ -136,7 +139,7 @@ class Run extends React.Component {
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         )

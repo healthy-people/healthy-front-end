@@ -30,9 +30,9 @@ class Bike extends React.Component {
 
     }
 
-    showSpeed() {
-        document.getElementById("speed").classList.remove('hide');
-    }
+    // showSpeed() {
+    //     document.getElementById("speed").classList.remove('hide');
+    // }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -73,7 +73,7 @@ class Bike extends React.Component {
                     <div className="row">
                         <div className="input-field col s6">
                             <input id="bikeName" type="text" data-length="10" name="challenge_name" value={this.state.challenge_name} onChange={this.handleInputChange} />
-                            <label className="bikeLabel" htmlFor="input_text" >Challenge Date</label>
+                            <label className="bikeLabel" htmlFor="input_text" >Challenge Name</label>
                         </div>
                     </div>
                     <div className="row center">
@@ -109,13 +109,16 @@ class Bike extends React.Component {
                             </p>
                             <p>
                                 <label>
-                                    <input name="speed" type="radio" onClick={this.showSpeed} />
+                                    <input name="speed" type="radio" />
                                     <span className="bikeSpan">Speed</span>
                                 </label>
                             </p>
                         </form>
+                        <div>
+                            <a className="submitRunLog waves-effect waves-light btn" href="/challengepage" onClick={this.handleSumbitDistance}>Submit</a>
+                        </div>
                     </div>
-                    <div className="row hide" id="speed">
+                    {/* <div className="row hide" id="speed">
                         <h5>How many miles would you like to set for the speed challenge?</h5>
                         <form action="#">
                             <div className="row">
@@ -128,7 +131,7 @@ class Bike extends React.Component {
                                 <a className="bikeFinishBtn waves-effect waves-light btn" onClick={this.handleSubmitDistance}>Finish</a>
                             </div>
                         </form>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
